@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fogón de la 45 · Almuerzos en Teusaquillo (demo)</title>
+<meta name="description" content="Sitio de demostración de Faro Estudio Digital. Restaurante ficticio con menú del día automático y reservas por WhatsApp.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--tomato:#C8361F;--mustard:#F2B230;--coffee:#2A1A12;--paper:#FFFDF7;--cilantro:#3D7A35;--muted:#6B584D;--line:#EADFCF}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:"Karla",system-ui,sans-serif;font-size:1.0625rem;line-height:1.6;color:var(--coffee);background:var(--paper)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mustard);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;line-height:1.08}
+h1{font-size:clamp(2.3rem,5.6vw,4.2rem)}
+h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+h3{font-size:1.2rem}
+p{max-width:60ch}
+.demo-bar{background:var(--coffee);color:#F3E3CC;font-size:.85rem;text-align:center;padding:7px 12px}
+.demo-bar a{color:var(--mustard);font-weight:700}
+/* The tablecloth: signature element */
+.mantel{height:30px;background-color:#fff;background-image:linear-gradient(90deg,rgba(200,54,31,.5) 50%,transparent 50%),linear-gradient(rgba(200,54,31,.5) 50%,transparent 50%);background-size:30px 30px}
+.btn{display:inline-block;font:inherit;font-weight:700;text-decoration:none;border-radius:8px;padding:.85em 1.3em;border:3px solid var(--coffee);cursor:pointer;box-shadow:4px 4px 0 var(--coffee);transition:transform .12s ease,box-shadow .12s ease}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--coffee)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--coffee)}
+.btn-red{background:var(--tomato);color:#fff}
+.btn-yellow{background:var(--mustard);color:var(--coffee)}
+
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0}
+.logo{font-family:"Alfa Slab One",serif;font-size:1.5rem;text-decoration:none;color:var(--tomato);line-height:1}
+.logo small{display:block;font-family:"Karla",sans-serif;font-size:.8rem;color:var(--muted);font-weight:500;margin-top:4px}
+nav{display:flex;gap:22px;align-items:center}
+nav a:not(.btn){text-decoration:none;font-weight:700}
+nav a:not(.btn):hover{color:var(--tomato)}
+@media (max-width:820px){nav a:not(.btn){display:none}}
+@media (max-width:480px){header .btn{padding:.6em .95em;font-size:.92rem}}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:40px 0 80px}
+.hero .lede{font-size:1.2rem;color:var(--muted);margin:20px 0 28px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:16px}
+@media (max-width:880px){.hero{grid-template-columns:1fr}}
+
+.board{background:var(--coffee);color:#FFF6E6;border-radius:16px;padding:28px;border:10px solid #7A4E2D;box-shadow:0 20px 40px -20px rgba(42,26,18,.6)}
+.board .day{color:var(--mustard);font-weight:700;font-size:1rem}
+.board h2{font-size:1.9rem;color:#fff;margin:4px 0 16px}
+.board dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px}
+.board dt{color:#D9C4A8;font-size:.92rem;padding-top:2px}
+.board dd{font-weight:700;font-size:1.08rem}
+.board .price{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:2px dashed #6E5240}
+.board .price b{font-family:"Alfa Slab One",serif;font-size:1.8rem;color:var(--mustard);font-weight:400}
+
+section{padding:84px 0}
+.week{background:#fff;border-block:1px solid var(--line)}
+.days{list-style:none;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:34px}
+.days li{border:2px solid var(--line);border-radius:12px;padding:16px;background:var(--paper)}
+.days li.today{border-color:var(--tomato);background:#FFF1EC}
+.days li b{display:block;font-family:"Alfa Slab One",serif;font-weight:400;color:var(--tomato)}
+.days li span{display:block;font-size:.95rem;margin-top:6px}
+.days li small{display:block;color:var(--muted);font-size:.85rem;margin-top:4px}
+@media (max-width:960px){.days{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.days{grid-template-columns:1fr 1fr}}
+
+.carta{display:grid;grid-template-columns:1fr 1fr;gap:20px 56px;margin-top:34px}
+.carta h3{color:var(--tomato);margin-bottom:8px}
+.item{display:flex;align-items:baseline;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.item div{flex:1}
+.item small{display:block;color:var(--muted);font-size:.9rem}
+.item b{font-variant-numeric:tabular-nums}
+@media (max-width:760px){.carta{grid-template-columns:1fr}}
+
+.reserve{background:var(--mustard)}
+.reserve .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+@media (max-width:860px){.reserve .grid{grid-template-columns:1fr}}
+form{background:var(--paper);border:3px solid var(--coffee);border-radius:14px;padding:26px;display:grid;gap:14px;box-shadow:6px 6px 0 var(--coffee)}
+label{display:grid;gap:6px;font-weight:700;font-size:.95rem}
+input,select{font:inherit;font-weight:400;padding:.65em .8em;border:2px solid var(--line);border-radius:8px;background:#fff;color:var(--coffee)}
+input:focus,select:focus{border-color:var(--tomato);outline:none}
+.row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media (max-width:520px){.row{grid-template-columns:1fr}}
+.preview{margin-top:18px;background:#E7F7EC;border:3px solid var(--coffee);border-radius:14px;padding:16px}
+.bubble{background:#fff;border-radius:12px 12px 12px 2px;padding:12px 14px;margin-top:8px}
+.preview small{display:block;color:var(--muted);margin-top:8px}
+
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.info p{color:var(--muted);margin-top:8px}
+@media (max-width:760px){.info{grid-template-columns:1fr}}
+footer{background:var(--coffee);color:#D9C4A8;padding:26px 0;font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="demo-bar">Sitio de demostración hecho por <a href="../../index.html">Faro Estudio Digital</a>. Restaurante, precios y datos ficticios.</div>
+<div class="mantel" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header>
+    <a class="logo" href="#">Fogón de la 45<small>Comida casera · Teusaquillo</small></a>
+    <nav aria-label="Principal">
+      <a href="#semana">Menú de la semana</a>
+      <a href="#carta">Carta</a>
+      <a href="#info">Horario</a>
+      <a class="btn btn-red" href="#reservar">Reservar</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Almuerzo completo por $18.000, de lunes a sábado</h1>
+      <p class="lede">Sopa, seco, jugo natural y postre, hechos cada mañana en Teusaquillo. Para comer aquí, para llevar o a domicilio en el barrio.</p>
+      <div class="actions">
+        <a class="btn btn-red" href="#reservar">Reservar mesa</a>
+        <a class="btn btn-yellow" href="#reservar">Pedir a domicilio</a>
+      </div>
+    </div>
+
+    <article class="board" aria-live="polite">
+      <div class="day" id="board-day">Menú de hoy</div>
+      <h2 id="board-title">Almuerzo del día</h2>
+      <dl id="board-list"></dl>
+      <div class="price"><span>Almuerzo completo</span><b id="board-price">$18.000</b></div>
+    </article>
+  </div>
+</div>
+
+<section id="semana" class="week">
+  <div class="wrap">
+    <h2>Menú de la semana</h2>
+    <p style="color:var(--muted);margin-top:10px">El tablero de arriba cambia solo según el día. El restaurante actualiza el menú desde una hoja de Google, sin llamar a nadie.</p>
+    <ul class="days" id="days"></ul>
+  </div>
+</section>
+
+<section id="carta">
+  <div class="wrap">
+    <h2>A la carta</h2>
+    <div class="carta">
+      <div>
+        <h3>Platos fuertes</h3>
+        <div class="item"><div>Bandeja paisa<small>Frijoles, chicharrón, carne molida, huevo, arepa y maduro</small></div><b>$32.000</b></div>
+        <div class="item"><div>Churrasco<small>300 g con papa criolla y chimichurri</small></div><b>$38.000</b></div>
+        <div class="item"><div>Pechuga gratinada<small>Con arroz, ensalada y papa a la francesa</small></div><b>$28.000</b></div>
+        <div class="item"><div>Mojarra frita<small>Con patacón, arroz con coco y ensalada</small></div><b>$34.000</b></div>
+      </div>
+      <div>
+        <h3>Bebidas y postres</h3>
+        <div class="item"><div>Jugo natural en agua<small>Mora, lulo, maracuyá, mango o guanábana</small></div><b>$6.000</b></div>
+        <div class="item"><div>Jugo natural en leche</div><b>$7.000</b></div>
+        <div class="item"><div>Limonada de coco</div><b>$9.000</b></div>
+        <div class="item"><div>Postre de natas</div><b>$7.500</b></div>
+        <div class="item"><div>Brevas con arequipe</div><b>$7.000</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reservar" class="reserve">
+  <div class="wrap grid">
+    <div>
+      <h2>Reserve o pida a domicilio</h2>
+      <p style="margin-top:12px">Llene esto y le preparamos el mensaje para WhatsApp. Domicilios gratis a menos de 10 cuadras.</p>
+    </div>
+    <div>
+      <form id="form">
+        <label>Nombre<input name="nombre" required autocomplete="name" placeholder="Su nombre"></label>
+        <label>¿Qué necesita?<select name="tipo"><option>Reservar mesa</option><option>Pedir a domicilio</option><option>Recoger en el restaurante</option></select></label>
+        <div class="row">
+          <label>Personas<select name="personas"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>8</option><option>10 o más</option></select></label>
+          <label>Día<select name="dia" id="dia"></select></label>
+          <label>Hora<select name="hora"><option>12:00 m.</option><option>12:30 p. m.</option><option>1:00 p. m.</option><option>1:30 p. m.</option><option>2:00 p. m.</option><option>2:30 p. m.</option></select></label>
+        </div>
+        <button class="btn btn-red" type="submit">Preparar mensaje de WhatsApp</button>
+      </form>
+      <div class="preview" id="preview" hidden aria-live="polite">
+        <strong>Mensaje listo</strong>
+        <div class="bubble" id="msg"></div>
+        <small>En el sitio real, este botón abre WhatsApp con el mensaje listo para el restaurante.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="info">
+  <div class="wrap info">
+    <div><h3>Horario</h3><p>Lunes a viernes: 11:30 a. m. – 4:00 p. m.<br>Sábado: 11:30 a. m. – 5:00 p. m.<br>Domingo: cerrado</p></div>
+    <div><h3>Dirección</h3><p>Calle 45 # 17-00, Teusaquillo, Bogotá.<br>Dirección de ejemplo.</p></div>
+    <div><h3>Pagos</h3><p>Efectivo, tarjetas, Nequi y Bre-B. Pedidos para empresas con factura.</p></div>
+  </div>
+</section>
+
+<div class="mantel" aria-hidden="true"></div>
+<footer><div class="wrap">Fogón de la 45 · Restaurante ficticio para demostración · Diseño: Faro Estudio Digital</div></footer>
+
+<script>
+/* In a real client site this array is read from a published Google Sheet, so the owner edits the menu there. */
+const MENU = [
+  null, // domingo: cerrado
+  { dia: "lunes",     sopa: "Sopa de pasta",        seco: "Carne en bistec",               principio: "Frijoles",  jugo: "Mora",       postre: "Gelatina" },
+  { dia: "martes",    sopa: "Crema de ahuyama",     seco: "Pechuga a la plancha",          principio: "Lentejas",  jugo: "Lulo",       postre: "Arroz con leche" },
+  { dia: "miércoles", sopa: "Sancocho de gallina",  seco: "Cerdo en salsa de la casa",     principio: "Garbanzos", jugo: "Guanábana",  postre: "Brevas con arequipe" },
+  { dia: "jueves",    sopa: "Sopa de arroz",        seco: "Albóndigas en salsa criolla",   principio: "Frijoles",  jugo: "Maracuyá",   postre: "Flan de caramelo" },
+  { dia: "viernes",   sopa: "Cuchuco de trigo",     seco: "Mojarra frita",                 principio: "Patacones", jugo: "Mango",      postre: "Cocadas" },
+  { dia: "sábado",    especial: "Ajiaco santafereño", seco: "Con pollo, arroz, aguacate, crema y alcaparras", jugo: "Lulo", postre: "Postre de natas", precio: "$24.000" }
+];
+const ACOMP = "Arroz, ensalada y maduro";
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+
+(function board(){
+  const now = new Date();
+  let idx = now.getDay();
+  const fecha = now.toLocaleDateString("es-CO", { weekday: "long", day: "numeric", month: "long" });
+  const dayEl = document.getElementById("board-day");
+  if (MENU[idx] === null) { dayEl.textContent = "Hoy domingo estamos cerrados. Mañana lunes:"; idx = 1; }
+  else dayEl.textContent = "Hoy, " + fecha;
+  const m = MENU[idx];
+  const rows = m.especial
+    ? [["Especial", m.especial], ["Incluye", m.seco], ["Jugo", m.jugo], ["Postre", m.postre]]
+    : [["Sopa", m.sopa], ["Seco", m.seco], ["Principio", m.principio], ["Acompañamiento", ACOMP], ["Jugo natural", m.jugo], ["Postre", m.postre]];
+  document.getElementById("board-title").textContent = m.especial ? "Sábado de ajiaco" : "Almuerzo del " + m.dia;
+  document.getElementById("board-list").innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+  if (m.precio) document.getElementById("board-price").textContent = m.precio;
+
+  const today = now.getDay();
+  document.getElementById("days").innerHTML = MENU.slice(1).map((d, i) =>
+    `<li class="${i + 1 === today ? "today" : ""}"><b>${cap(d.dia)}</b><span>${d.especial || d.seco}</span><small>${d.sopa || d.seco}</small></li>`
+  ).join("");
+
+  const sel = document.getElementById("dia");
+  sel.innerHTML = ["Hoy", "Mañana", ...MENU.slice(1).map(d => cap(d.dia))].map(o => `<option>${o}</option>`).join("");
+})();
+
+document.getElementById("form").addEventListener("submit", e => {
+  e.preventDefault();
+  const d = new FormData(e.target);
+  const tipo = d.get("tipo");
+  const hora = d.get("hora"); // options already end in "m."
+  const msg = tipo === "Reservar mesa"
+    ? `Hola, soy ${d.get("nombre").trim()}. Quiero reservar mesa para ${d.get("personas")} persona(s), ${d.get("dia").toLowerCase()} a las ${hora}`
+    : `Hola, soy ${d.get("nombre").trim()}. Quiero ${tipo.toLowerCase()}: ${d.get("personas")} almuerzo(s) para ${d.get("dia").toLowerCase()} a las ${hora}`;
+  document.getElementById("msg").textContent = msg;
+  document.getElementById("preview").hidden = false;
+});
+</script>
+</body>
+</html>

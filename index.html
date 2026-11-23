@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faro Estudio Digital · Páginas web para negocios en Colombia</title>
+<meta name="description" content="Estudio 100% en línea. Páginas web, perfil de Google y automatizaciones para consultorios, veterinarias y restaurantes de toda Colombia. Lista en 5 días, desde $790.000.">
+<meta property="og:title" content="Faro Estudio Digital">
+<meta property="og:description" content="Que lo encuentren cuando lo buscan. Páginas web para negocios de toda Colombia desde $790.000, todo por WhatsApp.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E1A3A'/%3E%3Cpath d='M13 13h6l2 15H11z' fill='%23F5F6F1'/%3E%3Crect x='12.5' y='9' width='7' height='4' rx='1' fill='%23FFC83D'/%3E%3Cpath d='M19.5 11L30 7v8z' fill='%23FFC83D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1A3A;      /* Bogotá de noche */
+  --ink-2:#1A2A55;
+  --beam:#FFC83D;     /* luz del faro */
+  --paper:#F5F6F1;
+  --moss:#2F6B4F;     /* cerros orientales */
+  --slate:#5B6478;
+  --line:#D8DBD2;
+  --white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:"Archivo",system-ui,sans-serif;font-stretch:100%;font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+img,svg{display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--beam);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-stretch:125%;font-weight:800;line-height:1.04;letter-spacing:-.015em}
+h1{font-size:clamp(2.3rem,5.4vw,4.1rem)}
+h2{font-size:clamp(1.85rem,3.6vw,2.75rem)}
+h3{font-size:1.3rem;font-stretch:112%;font-weight:750;line-height:1.2}
+p{max-width:62ch}
+.lede{font-size:1.2rem;line-height:1.55}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.55em;font:inherit;font-weight:700;font-stretch:108%;text-decoration:none;padding:.85em 1.3em;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .15s ease,background-color .15s ease}
+.btn:active{transform:translateY(1px)}
+.btn-beam{background:var(--beam);color:var(--ink)}
+.btn-beam:hover{background:#FFD566}
+.btn-line{border-color:currentColor;color:inherit}
+.btn-line:hover{background:rgba(255,255,255,.08)}
+.btn svg{width:1.2em;height:1.2em}
+
+/* Header + hero (one dark block) */
+.night{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+.night::before{ /* the beam */
+  content:"";position:absolute;right:-10%;top:-20%;width:85%;height:140%;
+  background:linear-gradient(200deg,rgba(255,200,61,.20),rgba(255,200,61,0) 60%);
+  clip-path:polygon(100% 0,100% 100%,0 55%);pointer-events:none}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;position:relative;z-index:2}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-stretch:125%;font-size:1.3rem;letter-spacing:-.01em}
+.brand small{display:block;font-size:.72rem;font-weight:500;font-stretch:100%;letter-spacing:0;opacity:.75;margin-top:-3px}
+.nav{display:flex;align-items:center;gap:26px}
+.nav a{text-decoration:none;font-weight:550;opacity:.85}
+.nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.nav .btn{opacity:1}
+@media (max-width:880px){.nav a:not(.btn){display:none}}
+@media (max-width:420px){.nav .btn span{display:none}}
+
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:40px 0 88px;position:relative;z-index:1}
+.hero h1{max-width:13ch}
+.hero .lede{margin:26px 0 32px;color:#D9DDEA}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.promises{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:34px;font-size:.95rem;color:#C9CEDD}
+.promises li{display:flex;align-items:center;gap:8px}
+.promises li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--beam)}
+@media (max-width:880px){.hero{grid-template-columns:1fr;padding-bottom:64px}}
+
+/* Phone search simulation */
+.phone{justify-self:center;width:min(100%,360px);background:#050B1F;border-radius:38px;padding:12px;box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.08)}
+.screen{background:#fff;color:#202124;border-radius:28px;padding:18px 14px 20px;min-height:470px;font-stretch:100%}
+.searchbar{display:flex;align-items:center;gap:10px;background:#F1F3F4;border-radius:999px;padding:11px 16px;font-size:.98rem;min-height:46px}
+.searchbar svg{width:18px;height:18px;flex:none;color:#5f6368}
+.caret{width:2px;height:1.15em;background:#1a73e8;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.results{list-style:none;margin-top:16px;display:grid;gap:10px}
+.result{border:1px solid #E3E5E8;border-radius:16px;padding:12px 13px;opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease}
+.results.show .result{opacity:1;transform:none}
+.results.show .result:nth-child(2){transition-delay:.12s}
+.results.show .result:nth-child(3){transition-delay:.24s}
+.result b{display:block;font-size:.98rem;font-weight:650;color:#1F1F1F}
+.stars{font-size:.82rem;color:#5f6368;margin:2px 0 1px}
+.stars i{font-style:normal;color:#E7A200;letter-spacing:1px}
+.meta{font-size:.8rem;color:#5f6368}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.chip{font-size:.76rem;font-weight:600;padding:5px 10px;border-radius:999px;border:1px solid #DADCE0;color:#0B57D0}
+.chip.web{background:#0B57D0;border-color:#0B57D0;color:#fff}
+.noweb{font-size:.74rem;color:#8A8F98;margin-top:7px}
+.result.featured{border:2px solid var(--beam);box-shadow:0 0 0 4px rgba(255,200,61,.25);position:relative}
+.tag{position:absolute;top:-11px;right:10px;background:var(--ink);color:var(--beam);font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:999px}
+
+/* Sections */
+section{padding:96px 0}
+.split{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+@media (max-width:880px){.split{grid-template-columns:1fr;gap:28px} section{padding:72px 0}}
+.intro p{margin-top:18px;color:var(--slate)}
+
+/* Services list */
+.services{list-style:none;border-top:2px solid var(--ink)}
+.services li{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:26px 0;border-bottom:1px solid var(--line)}
+.ico{width:52px;height:52px;border-radius:14px;background:var(--ink);color:var(--beam);display:grid;place-items:center}
+.ico svg{width:26px;height:26px}
+.services p{margin-top:6px;color:var(--slate)}
+.services .price-note{margin-top:8px;font-size:.92rem;font-weight:650;color:var(--moss)}
+
+/* Demos */
+.demos-band{background:var(--white);border-block:1px solid var(--line)}
+.demos-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.demos-head p{color:var(--slate)}
+.demos{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+@media (max-width:960px){.demos{grid-template-columns:1fr;max-width:560px}}
+.demo{text-decoration:none;display:block}
+.thumb{aspect-ratio:16/11;border-radius:14px;overflow:hidden;position:relative;background:var(--paper);border:1px solid var(--line);box-shadow:0 1px 0 var(--line)}
+.thumb iframe{position:absolute;top:0;left:0;width:1280px;height:880px;border:0;transform-origin:0 0;transform:scale(var(--s,.28));pointer-events:none}
+.demo h3{margin-top:16px}
+.demo p{margin-top:4px;color:var(--slate);font-size:.98rem}
+.demo .open{display:inline-block;margin-top:10px;font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--beam);text-decoration-thickness:3px}
+.demo:hover .thumb{border-color:var(--ink)}
+
+/* Pricing rows */
+.plans{margin-top:44px;border-top:2px solid var(--ink)}
+.plan{display:grid;grid-template-columns:1fr 1.5fr 160px;gap:28px;padding:30px 0;border-bottom:1px solid var(--line);align-items:start}
+.plan.main{background:linear-gradient(90deg,rgba(255,200,61,.18),rgba(255,200,61,0));margin:0 -20px;padding:30px 20px;border-radius:0}
+.plan .name{font-stretch:125%;font-weight:800;font-size:1.45rem;line-height:1.1}
+.plan .for{color:var(--slate);font-size:.95rem;margin-top:6px}
+.plan ul{list-style:none;display:grid;gap:6px}
+.plan ul li{padding-left:22px;position:relative}
+.plan ul li::before{content:"";position:absolute;left:2px;top:.62em;width:10px;height:6px;border-left:2.5px solid var(--moss);border-bottom:2.5px solid var(--moss);transform:rotate(-45deg)}
+.amount{font-stretch:118%;font-weight:800;font-size:1.6rem;line-height:1.1}
+.amount small{display:block;font-size:.85rem;font-weight:500;font-stretch:100%;color:var(--slate);margin-top:4px}
+.amount s{color:var(--slate);font-weight:500;font-size:.95rem}
+.when{font-size:.9rem;color:var(--moss);font-weight:650;margin-top:8px}
+@media (max-width:880px){.plan{grid-template-columns:1fr;gap:14px}}
+.extras{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px}
+.extra{border:2px solid var(--ink);border-radius:18px;padding:24px}
+.extra p{color:var(--slate);margin-top:6px;font-size:.98rem}
+.extra .amount{font-size:1.3rem;margin-top:12px}
+@media (max-width:760px){.extras{grid-template-columns:1fr}}
+.launch{margin-top:28px;padding:18px 22px;border-radius:14px;background:var(--ink);color:var(--paper);display:flex;gap:14px;align-items:center}
+.launch strong{color:var(--beam)}
+
+/* Steps: a real sequence, so numbers are earned */
+.steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px}
+.steps li{counter-increment:s;position:relative;padding-top:64px}
+.steps li::before{content:counter(s);position:absolute;top:0;left:0;width:46px;height:46px;border-radius:50%;background:var(--beam);color:var(--ink);display:grid;place-items:center;font-weight:800;font-stretch:125%;font-size:1.2rem}
+.steps li:not(:last-child)::after{content:"";position:absolute;top:23px;left:58px;right:-12px;height:2px;background:var(--line)}
+.steps p{margin-top:8px;color:var(--slate);font-size:.98rem}
+@media (max-width:880px){.steps{grid-template-columns:1fr 1fr}.steps li::after{display:none}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:2px solid var(--ink)}
+.faq summary{cursor:pointer;list-style:none;padding:22px 40px 22px 0;font-weight:700;font-size:1.1rem;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:12px;height:12px;border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:translateY(-70%) rotate(45deg);transition:transform .2s ease}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(225deg)}
+.faq details p{padding:0 0 22px;color:var(--slate)}
+
+/* Contact */
+.contact{background:var(--ink);color:var(--paper);text-align:left}
+.contact .split{align-items:center}
+.contact p{color:#D9DDEA;margin-top:16px}
+.contact-box{background:var(--ink-2);border-radius:22px;padding:30px;display:grid;gap:14px}
+.contact-box a.mail{color:var(--beam);font-weight:650}
+.small{font-size:.9rem;color:#AEB5C9}
+footer{background:#08112A;color:#AEB5C9;font-size:.92rem;padding:28px 0}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+
+<div class="night">
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="#" aria-label="Faro Estudio Digital, inicio">
+        <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"><path d="M19.5 11L31 6.5v9z" fill="#FFC83D" opacity=".9"/><path d="M14 5.5l2-2.5 2 2.5z" fill="#F5F6F1"/><rect x="12.5" y="6.5" width="7" height="4.5" rx="1" fill="#FFC83D"/><path d="M13 12h6l2.2 17H10.8z" fill="#F5F6F1"/><path d="M12.3 18h7.4l.4 3h-8.2z" fill="#FFC83D"/></svg>
+        <span>Faro<small>Estudio Digital</small></span>
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#ejemplos">Ejemplos</a>
+        <a href="#precios">Precios</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#preguntas">Preguntas</a>
+        <a class="btn btn-beam" data-wa href="#contacto"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg><span>WhatsApp</span></a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div>
+        <h1>Cuando alguien busca su negocio en Google, ¿qué encuentra?</h1>
+        <p class="lede">Hacemos páginas web, perfiles de Google y pequeñas automatizaciones para consultorios, veterinarias y restaurantes de toda Colombia. Todo se hace por WhatsApp: su página lista en 5 días hábiles, desde $790.000.</p>
+        <div class="hero-actions">
+          <a class="btn btn-beam" data-wa href="#contacto">Pedir una propuesta por WhatsApp</a>
+          <a class="btn btn-line" href="#ejemplos">Ver ejemplos</a>
+        </div>
+        <ul class="promises">
+          <li>100% en línea, sin reuniones presenciales</li>
+          <li>Sin mensualidad obligatoria</li>
+          <li>El dominio queda a su nombre</li>
+          <li>50% al empezar, 50% al entregar</li>
+        </ul>
+      </div>
+
+      <div class="phone" role="img" aria-label="Ejemplo de una búsqueda en Google Maps: de tres negocios con buenas reseñas, solo uno tiene página web.">
+        <div class="screen" aria-hidden="true">
+          <div class="searchbar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>
+            <span id="query"></span><span class="caret"></span>
+          </div>
+          <ol class="results" id="results"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section id="servicios">
+    <div class="wrap split">
+      <div class="intro">
+        <h2>Todo lo que su negocio necesita para que lo encuentren y le escriban</h2>
+        <p>Usted responde un cuestionario corto y nos manda fotos desde el celular. Nosotros escribimos los textos, diseñamos, publicamos y le explicamos cómo funciona.</p>
+      </div>
+      <ul class="services">
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 18.5h4"/></svg></span>
+          <div><h3>Página web</h3><p>Rápida y pensada para el celular: sus servicios, precios, fotos, ubicación y un botón para escribirle por WhatsApp.</p></div>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <div><h3>Perfil de Google Maps</h3><p>Dejamos su ficha completa: horarios, fotos, categorías y el enlace a su página, para que aparezca cuando lo buscan cerca.</p></div>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M15 9v11"/></svg></span>
+          <div><h3>Automatizaciones</h3><p>Citas que llegan solas a una hoja de Google, recordatorios, control de inventario o cotizaciones en un clic. Menos tiempo en el celular, menos clientes perdidos.</p></div>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4.5h-4.5"/></svg></span>
+          <div><h3>Mantenimiento</h3><p>¿Cambió el menú, los precios o el horario? Nos escribe y lo actualizamos. Sin contratos largos.</p><p class="price-note">$90.000 al mes, opcional</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ejemplos" class="demos-band">
+    <div class="wrap">
+      <div class="demos-head">
+        <h2>Ejemplos que puede abrir ahora</h2>
+        <p>Negocios ficticios creados para mostrar el trabajo. Ábralos en su celular.</p>
+      </div>
+      <div class="demos">
+        <a class="demo" href="demos/odontologia/index.html">
+          <div class="thumb"><iframe src="demos/odontologia/index.html" title="Vista previa: consultorio odontológico" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+          <h3>Consultorio odontológico</h3>
+          <p>Precios claros por tratamiento y agenda de citas que llega al WhatsApp del consultorio.</p>
+          <span class="open">Abrir ejemplo</span>
+        </a>
+        <a class="demo" href="demos/restaurante/index.html">
+          <div class="thumb"><iframe src="demos/restaurante/index.html" title="Vista previa: restaurante" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+          <h3>Restaurante de almuerzos</h3>
+          <p>Menú del día que cambia solo cada día de la semana, carta completa y reservas.</p>
+          <span class="open">Abrir ejemplo</span>
+        </a>
+        <a class="demo" href="demos/veterinaria/index.html">
+          <div class="thumb"><iframe src="demos/veterinaria/index.html" title="Vista previa: veterinaria" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+          <h3>Clínica veterinaria</h3>
+          <p>Botón de urgencias, calendario de vacunas para perros y gatos y agenda de consultas.</p>
+          <span class="open">Abrir ejemplo</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="precios">
+    <div class="wrap">
+      <h2>Precios fijos, sin sorpresas</h2>
+      <div class="plans">
+        <div class="plan">
+          <div><div class="name">Vitrina</div><p class="for">Para tener presencia profesional ya.</p></div>
+          <ul>
+            <li>Página de una sección con todo lo esencial</li>
+            <li>Textos escritos por nosotros</li>
+            <li>Botón de WhatsApp, mapa y horarios</li>
+            <li>Perfil de Google Maps optimizado</li>
+          </ul>
+          <div class="amount">$790.000<small><s>$1.200.000</s> precio de lanzamiento</small><p class="when">5 días hábiles</p></div>
+        </div>
+        <div class="plan main">
+          <div><div class="name">Negocio</div><p class="for">El más pedido. Para recibir clientes desde la página.</p></div>
+          <ul>
+            <li>Hasta 5 secciones: inicio, servicios, galería, nosotros, contacto</li>
+            <li>Formulario de citas o reservas</li>
+            <li>Estadísticas de visitas</li>
+            <li>Política de tratamiento de datos</li>
+            <li>Todo lo del plan Vitrina</li>
+          </ul>
+          <div class="amount">$1.600.000<small><s>$2.400.000</s> precio de lanzamiento</small><p class="when">10 días hábiles</p></div>
+        </div>
+        <div class="plan">
+          <div><div class="name">Negocio + Automatización</div><p class="for">Para ahorrar horas de trabajo cada semana.</p></div>
+          <ul>
+            <li>Todo lo del plan Negocio</li>
+            <li>Una automatización a su medida: citas a Google Sheets con recordatorios, inventario o cotizaciones</li>
+            <li>Capacitación de 30 minutos</li>
+          </ul>
+          <div class="amount">$2.600.000<small><s>$3.800.000</s> precio de lanzamiento</small><p class="when">15 días hábiles</p></div>
+        </div>
+      </div>
+
+      <div class="extras">
+        <div class="extra">
+          <h3>Plan Siempre al Día</h3>
+          <p>Alojamiento, copias de seguridad, hasta una hora de cambios al mes y un resumen mensual de visitas.</p>
+          <div class="amount">$90.000 al mes</div>
+        </div>
+        <div class="extra">
+          <h3>Automatización suelta</h3>
+          <p>¿Ya tiene página? Le hacemos solo la herramienta que necesita: inventario, cotizador, agenda o reportes.</p>
+          <div class="amount">Desde $600.000</div>
+        </div>
+      </div>
+
+      <p class="launch"><span><strong>Precio de lanzamiento</strong> para los primeros clientes, a cambio de un testimonio y permiso para mostrar su página. El dominio (entre $50.000 y $150.000 al año) se paga aparte y queda a su nombre.</span></p>
+    </div>
+  </section>
+
+  <section id="proceso" class="demos-band">
+    <div class="wrap">
+      <h2>Cómo trabajamos</h2>
+      <ol class="steps">
+        <li><h3>Conversamos</h3><p>15 minutos por WhatsApp o videollamada. Le enviamos una propuesta con precio fijo el mismo día.</p></li>
+        <li><h3>Nos cuenta de su negocio</h3><p>Responde un cuestionario sencillo y nos manda fotos y logo. Paga el 50%.</p></li>
+        <li><h3>Revisa la primera versión</h3><p>La ve en su celular en pocos días y nos pide cambios. Dos rondas incluidas.</p></li>
+        <li><h3>Publicamos</h3><p>Paga el 50% restante, conectamos su dominio y su perfil de Google, y queda en línea.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="preguntas">
+    <div class="wrap split">
+      <div class="intro"><h2>Preguntas frecuentes</h2><p>¿No encuentra su pregunta? Escríbanos por WhatsApp y le respondemos el mismo día.</p></div>
+      <div class="faq">
+        <details><summary>¿Dónde están ubicados?</summary><p>Somos un estudio 100% en línea. Trabajamos por WhatsApp, correo y videollamada con negocios de toda Colombia. No pagamos oficina, y por eso nuestros precios son más bajos.</p></details>
+        <details><summary>¿Tengo que pagar una mensualidad?</summary><p>No. Paga la página una sola vez. El plan Siempre al Día es opcional y lo puede cancelar cuando quiera.</p></details>
+        <details><summary>¿La página y el dominio son míos?</summary><p>Sí. El dominio se registra a su nombre y, una vez paga el total, la página es suya. Si algún día quiere irse, le entregamos todos los archivos.</p></details>
+        <details><summary>¿Cuánto cuesta tenerla en internet?</summary><p>Solo el dominio, entre $50.000 y $150.000 al año según la terminación (.com, .co o .com.co). El alojamiento está incluido sin costo mensual.</p></details>
+        <details><summary>¿Qué tengo que darles?</summary><p>Su logo si lo tiene, fotos de su negocio (las del celular sirven), la lista de servicios con precios y sus horarios. Los textos los escribimos nosotros.</p></details>
+        <details><summary>¿Puedo cambiar precios o el menú después?</summary><p>Sí. Con el plan de mantenimiento nos escribe y lo cambiamos. También podemos conectar la página a una hoja de Google para que usted mismo actualice el menú o los precios.</p></details>
+        <details><summary>¿Cómo puedo pagar?</summary><p>Transferencia bancaria, Bre-B, Nequi o Daviplata. 50% para empezar y 50% cuando aprueba la página, antes de publicarla.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <div class="wrap split">
+      <div>
+        <h2>Cuéntenos de su negocio</h2>
+        <p>Le respondemos con una idea de cómo se vería su página y una propuesta con precio fijo. Sin compromiso.</p>
+      </div>
+      <div class="contact-box">
+        <a class="btn btn-beam" data-wa href="#contacto">Escribir por WhatsApp</a>
+        <p>O por correo: <a class="mail" id="mail" href="#">correo</a></p>
+        <p class="small">Trabajamos 100% en línea con negocios de toda Colombia. Respondemos el mismo día.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Faro Estudio Digital, estudio en línea en Colombia</span>
+    <span>© <span id="year">2026</span></span>
+  </div>
+</footer>
+
+<script>
+/* ==== TODO: put your real contact details here ==== */
+const CONTACT = {
+  whatsapp: "57XXXXXXXXXX",            // e.g. "573001234567" (country code + number, no spaces)
+  email: "faroestudioweb@gmail.com"    // switch to hola@<your domain> once the domain is set up
+};
+const WA_TEXT = "Hola, vi su página y quiero información sobre una página web para mi negocio.";
+
+(function setupContact(){
+  const ready = /^\d{11,13}$/.test(CONTACT.whatsapp);
+  document.querySelectorAll("[data-wa]").forEach(a => {
+    if (ready) {
+      a.href = "https://wa.me/" + CONTACT.whatsapp + "?text=" + encodeURIComponent(WA_TEXT);
+      a.target = "_blank"; a.rel = "noopener";
+    } else {
+      a.href = "#contacto";
+    }
+  });
+  const mail = document.getElementById("mail");
+  mail.href = "mailto:" + CONTACT.email;
+  mail.textContent = CONTACT.email;
+  document.getElementById("year").textContent = new Date().getFullYear();
+  if (!ready) console.warn("Faro: set CONTACT.whatsapp in index.html before publishing.");
+})();
+
+/* ==== Demo thumbnails: scale live pages to fit ==== */
+(function scaleThumbs(){
+  const thumbs = document.querySelectorAll(".thumb");
+  const ro = new ResizeObserver(entries => {
+    for (const e of entries) e.target.style.setProperty("--s", (e.contentRect.width / 1280).toFixed(4));
+  });
+  thumbs.forEach(t => ro.observe(t));
+})();
+
+/* ==== Hero: simulated Google Maps search ==== */
+(function searchDemo(){
+  const scenes = [
+    { q: "dentista en Chapinero", r: [
+      { n: "Consultorio Dental Calle 57", s: 4.3, c: 38, m: "Odontólogo · Abierto hasta 6 p. m." },
+      { n: "Odontología Sonrisa Andina", s: 4.9, c: 212, m: "Odontólogo · Abierto hasta 7 p. m.", web: true },
+      { n: "Centro Odontológico Caracas", s: 4.1, c: 19, m: "Odontólogo · Cierra pronto" } ]},
+    { q: "veterinaria en Suba", r: [
+      { n: "Veterinaria Cerro Verde", s: 4.8, c: 341, m: "Veterinario · Urgencias 24 horas", web: true },
+      { n: "Clínica Mascotas Calle 145", s: 4.4, c: 57, m: "Veterinario · Abierto hasta 8 p. m." },
+      { n: "Pet Shop y Consultorio Tibabuyes", s: 4.0, c: 23, m: "Veterinario · Abierto hasta 7 p. m." } ]},
+    { q: "almuerzo en Teusaquillo", r: [
+      { n: "Corrientazo Doña Mery", s: 4.5, c: 96, m: "Restaurante · $ · Abierto hasta 4 p. m." },
+      { n: "Asadero La 39", s: 4.2, c: 44, m: "Restaurante · $$ · Abierto hasta 9 p. m." },
+      { n: "Fogón de la 45", s: 4.7, c: 508, m: "Restaurante · $ · Abierto hasta 5 p. m.", web: true } ]}
+  ];
+  const qEl = document.getElementById("query");
+  const list = document.getElementById("results");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const stars = s => "★★★★★".slice(0, Math.round(s));
+  function render(scene){
+    list.innerHTML = scene.r.map(x => `
+      <li class="result${x.web ? " featured" : ""}">
+        ${x.web ? '<span class="tag">Con página web</span>' : ""}
+        <b>${x.n}</b>
+        <div class="stars">${x.s.toFixed(1)} <i>${stars(x.s)}</i> (${x.c})</div>
+        <div class="meta">${x.m}</div>
+        <div class="chips">${x.web ? '<span class="chip web">Sitio web</span>' : ""}<span class="chip">Llamar</span><span class="chip">Cómo llegar</span></div>
+        ${x.web ? "" : '<div class="noweb">Sin sitio web</div>'}
+      </li>`).join("");
+  }
+
+  if (reduce) { qEl.textContent = scenes[0].q; render(scenes[0]); list.classList.add("show"); return; }
+
+  let i = 0;
+  function play(){
+    const scene = scenes[i % scenes.length];
+    list.classList.remove("show");
+    qEl.textContent = "";
+    let k = 0;
+    const type = () => {
+      qEl.textContent = scene.q.slice(0, ++k);
+      if (k < scene.q.length) setTimeout(type, 65);
+      else setTimeout(() => { render(scene); requestAnimationFrame(() => list.classList.add("show")); setTimeout(() => { i++; play(); }, 5200); }, 350);
+    };
+    setTimeout(type, 500);
+  }
+  play();
+})();
+</script>
+</body>
+</html>
