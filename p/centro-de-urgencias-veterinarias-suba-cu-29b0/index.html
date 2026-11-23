@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro de Urgencias Veterinarias Suba CUVS · Suba, Bogotá</title>
+<meta name="description" content="Propuesta de página web para Centro de Urgencias Veterinarias Suba CUVS, preparada por Faro Estudio Digital.">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hecha para CUVS: así se vería su página web">
+<meta property="og:description" content="Una propuesta de Faro Estudio Digital para Centro de Urgencias Veterinarias Suba CUVS, en Suba.">
+<meta property="og:image" content="https://faroestudioweb.github.io/p/centro-de-urgencias-veterinarias-suba-cu-29b0/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#16243F;--leaf:#2D6A9F;--lilac:#FFCFCB;--lilac-2:#FFF0EE;--mist:#F7F6F8;--sun:#FFD873;--muted:#5D6A63;--line:#E2DFEE;--alert:#C92A45}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:"Nunito Sans",system-ui,sans-serif;font-size:1.0625rem;line-height:1.6;color:var(--forest);background:var(--mist);padding-bottom:70px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--leaf);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Baloo 2",system-ui,sans-serif;font-weight:800;line-height:1.05}
+h1{font-size:clamp(2.4rem,5.6vw,4.2rem)}
+h2{font-size:clamp(1.9rem,3.6vw,2.7rem)}
+h3{font-size:1.35rem;font-weight:700}
+p{max-width:60ch}
+.demo-bar{background:var(--forest);color:var(--lilac);font-size:.85rem;text-align:center;padding:7px 12px}
+.demo-bar a{color:#fff;font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:700;text-decoration:none;border-radius:999px;padding:.8em 1.35em;border:0;cursor:pointer}
+.btn-forest{background:var(--forest);color:#fff}
+.btn-forest:hover{background:#2D6A9F}
+.btn-alert{background:var(--alert);color:#fff}
+.btn-alert:hover{background:#A9213A}
+.btn-soft{background:var(--lilac);color:var(--forest)}
+
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo b{font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.4rem;line-height:1;display:block}
+.logo small{color:var(--muted);font-size:.8rem}
+nav{display:flex;gap:22px;align-items:center}
+nav a:not(.btn){text-decoration:none;font-weight:700;color:var(--muted)}
+nav a:not(.btn):hover{color:var(--forest)}
+@media (max-width:860px){nav a:not(.btn){display:none}}
+@media (max-width:480px){header .btn{padding:.6em .95em;font-size:.92rem}.logo small{display:none}}
+
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:30px 0 80px}
+.hero .lede{font-size:1.2rem;color:var(--muted);margin:18px 0 28px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px}
+.blob{aspect-ratio:1;background:var(--lilac);border-radius:46% 54% 40% 60%/55% 42% 58% 45%;display:grid;place-items:center;position:relative}
+.blob svg{width:62%;height:auto}
+.blob .badge{position:absolute;bottom:8%;left:-4%;background:#fff;border-radius:18px;padding:12px 16px;box-shadow:0 12px 30px -12px rgba(29,59,46,.4);font-weight:700;font-size:.95rem}
+.blob .badge span{display:block;color:var(--alert);font-family:"Baloo 2",sans-serif;font-size:1.5rem;line-height:1}
+@media (max-width:860px){.hero{grid-template-columns:1fr}.blob{max-width:340px;justify-self:center;width:100%}}
+
+section{padding:84px 0}
+.white{background:#fff}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+.services div{padding:22px;border-radius:22px;background:var(--mist)}
+.services div:nth-child(2){background:var(--lilac-2)}
+.services div:nth-child(3){background:#FFF6DA}
+.services div:nth-child(4){background:#E5F3EA}
+.services p{color:var(--muted);margin-top:6px;font-size:.97rem}
+@media (max-width:900px){.services{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.services{grid-template-columns:1fr}}
+
+/* Vaccination card: signature element */
+.carnet{margin-top:34px;background:#fff;border:2px solid var(--forest);border-radius:24px;overflow:hidden;max-width:860px}
+.carnet-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--forest);color:#fff;padding:16px 22px}
+.carnet-top b{font-family:"Baloo 2",sans-serif;font-size:1.3rem}
+.tabs{display:flex;gap:6px;background:rgba(255,255,255,.12);padding:4px;border-radius:999px}
+.tabs button{font:inherit;font-weight:700;border:0;background:transparent;color:#fff;padding:.4em 1.1em;border-radius:999px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--sun);color:var(--forest)}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:14px 22px;border-bottom:1px dashed var(--line);vertical-align:top}
+th{font-size:.88rem;color:var(--muted);font-weight:700;background:var(--mist)}
+td:first-child{font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.stamp{display:inline-block;border:2px solid var(--leaf);color:var(--leaf);border-radius:6px;padding:0 8px;font-size:.8rem;font-weight:700;transform:rotate(-3deg)}
+.fine{font-size:.88rem;color:var(--muted);padding:14px 22px;border-top:1px solid var(--line)}
+@media (max-width:560px){th,td{padding:12px 14px}td:first-child{white-space:normal}}
+
+.book{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+@media (max-width:860px){.book{grid-template-columns:1fr}}
+form{background:#fff;border-radius:24px;padding:26px;display:grid;gap:14px;border:1px solid var(--line)}
+label{display:grid;gap:6px;font-weight:700;font-size:.95rem}
+input,select,textarea{font:inherit;font-weight:400;padding:.65em .85em;border:2px solid var(--line);border-radius:12px;background:var(--mist);color:var(--forest)}
+input:focus,select:focus,textarea:focus{border-color:var(--leaf);outline:none}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:480px){.row{grid-template-columns:1fr}}
+.preview{margin-top:16px;background:#E7F7EC;border-radius:18px;padding:16px}
+.bubble{background:#fff;border-radius:12px 12px 12px 2px;padding:12px 14px;margin-top:8px}
+.preview small{display:block;color:var(--muted);margin-top:8px}
+
+.visit{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.visit p{color:var(--muted);margin-top:6px}
+@media (max-width:760px){.visit{grid-template-columns:1fr}}
+footer{padding:26px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+
+.sos{position:fixed;left:0;right:0;bottom:0;background:var(--alert);color:#fff;display:flex;justify-content:center;align-items:center;gap:14px;padding:12px 16px;font-weight:700;z-index:10}
+.sos button{font:inherit;font-weight:800;background:#fff;color:var(--alert);border:0;border-radius:999px;padding:.45em 1.1em;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);background:var(--forest);color:#fff;padding:12px 18px;border-radius:14px;font-size:.95rem;max-width:90vw;z-index:11}
+.hello{background:var(--forest);color:#fff;font-size:.95rem;padding:12px 16px;line-height:1.5}.hello-in{max-width:1120px;margin:0 auto}.hello a{color:inherit;font-weight:700}.voices{padding:64px 0;background:var(--lilac-2)}.voices blockquote{font-family:'Baloo 2',serif;font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.2;max-width:30ch}.voices figcaption{margin-top:16px;color:var(--muted);font-size:.95rem}
+</style>
+</head>
+<body>
+<div class="hello" role="note"><div class="hello-in"><strong>Hola, equipo de CUVS.</strong> Hicimos esta página pensando en ustedes: así podría verse su sitio web. Fotos, colores, servicios y precios se ajustan a su gusto. <a href="https://faroestudioweb.github.io">Faro Estudio Digital</a></div></div>
+
+<div class="wrap">
+  <header>
+    <a class="logo" href="#">
+      <svg width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="14" fill="#16243F"/><g fill="#FFCFCB"><ellipse cx="14" cy="16" rx="3.2" ry="4"/><ellipse cx="21" cy="12.5" rx="3.2" ry="4"/><ellipse cx="28" cy="16" rx="3.2" ry="4"/><path d="M21 19.5c4.5 0 8.5 5 8.5 8.2 0 2.4-2 3.3-4 2.8-1.6-.4-3-1.1-4.5-1.1s-2.9.7-4.5 1.1c-2 .5-4-.4-4-2.8 0-3.2 4-8.2 8.5-8.2z"/></g></svg>
+      <span><b>CUVS</b><small>Urgencias veterinarias 24 horas · Suba</small></span>
+    </a>
+    <nav aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#vacunas">Vacunas</a>
+      <a href="#visitenos">Ubicación</a>
+      <a class="btn btn-forest" href="#agendar">Agendar consulta</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Urgencias veterinarias en Suba, de día y de noche</h1>
+      <p class="lede">Si su mascota se enferma a las 3 de la mañana, aquí hay un veterinario para atenderla. Llame de una vez o escríbanos por WhatsApp.</p>
+      <div class="actions">
+        <a class="btn btn-forest" href="#agendar">Agendar consulta</a>
+        <button class="btn btn-alert" type="button" data-sos>Urgencias 24 horas</button>
+      </div>
+    </div>
+    <div class="blob" aria-hidden="true">
+      <svg viewBox="0 0 200 200"><g fill="#16243F"><path d="M60 70c-14-30-6-45 6-44 10 1 22 18 26 30z"/><path d="M140 70c14-30 6-45-6-44-10 1-22 18-26 30z"/><path d="M100 50c38 0 62 30 62 66 0 40-28 62-62 62s-62-22-62-62c0-36 24-66 62-66z"/></g><circle cx="78" cy="108" r="7" fill="#fff"/><circle cx="122" cy="108" r="7" fill="#fff"/><ellipse cx="100" cy="132" rx="11" ry="8" fill="#FFD873"/><path d="M100 140v10M88 152c6 5 18 5 24 0" stroke="#FFD873" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+      <div class="badge"><span>24 h</span>Urgencias todos los días</div>
+    </div>
+  </div>
+</div>
+
+<section class="voices" aria-label="Reseña en Google"><div class="wrap"><figure><blockquote>“Recomendado al 100%, le salvaron la vida a mi cachorro.”</blockquote><figcaption>Reseña de un cliente en Google · 4,3 ★ promedio con 297 reseñas</figcaption></figure></div></section>
+
+<section id="servicios" class="white">
+  <div class="wrap">
+    <h2>Lo que hacemos</h2>
+    <div class="services">
+      <div><h3>Consulta general</h3><p>Revisión completa, diagnóstico y tratamiento.</p></div>
+      <div><h3>Vacunación</h3><p>Planes de vacunas para cachorros, gatitos y adultos, con carné.</p></div>
+      <div><h3>Peluquería</h3><p>Baño, corte y limpieza de oídos. Recogemos a su mascota.</p></div>
+      <div><h3>Cirugía y esterilización</h3><p>Quirófano propio, anestesia inhalada y control después.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="vacunas">
+  <div class="wrap">
+    <h2>¿Cuándo le toca la vacuna?</h2>
+    <p style="color:var(--muted);margin-top:10px">Calendario básico de vacunación. Escoja si tiene perro o gato.</p>
+    <div class="carnet">
+      <div class="carnet-top">
+        <b>Carné de vacunación</b>
+        <div class="tabs" role="tablist" aria-label="Tipo de mascota">
+          <button role="tab" aria-selected="true" aria-controls="plan" data-pet="perro">Perro</button>
+          <button role="tab" aria-selected="false" aria-controls="plan" data-pet="gato">Gato</button>
+        </div>
+      </div>
+      <table id="plan" role="tabpanel">
+        <thead><tr><th scope="col">Edad</th><th scope="col">Vacuna</th></tr></thead>
+        <tbody id="plan-body"></tbody>
+      </table>
+      <p class="fine">Calendario orientativo. El veterinario ajusta el plan según la salud y el estilo de vida de su mascota.</p>
+    </div>
+  </div>
+</section>
+
+<section id="agendar" class="white">
+  <div class="wrap book">
+    <div>
+      <h2>Agende una consulta</h2>
+      <p style="color:var(--muted);margin-top:12px">Le preparamos el mensaje para WhatsApp y le confirmamos la hora. Si es una urgencia, no llene el formulario: use el botón rojo.</p>
+    </div>
+    <div>
+      <form id="form">
+        <div class="row">
+          <label>Su nombre<input name="nombre" required autocomplete="name"></label>
+          <label>Nombre de la mascota<input name="mascota" required></label>
+        </div>
+        <div class="row">
+          <label>Es un<select name="especie"><option>perro</option><option>gato</option><option>otro</option></select></label>
+          <label>Motivo<select name="motivo"><option>consulta general</option><option>vacunación</option><option>peluquería</option><option>esterilización</option><option>control</option></select></label>
+        </div>
+        <label>Día preferido<select name="dia"><option>lunes</option><option>martes</option><option>miércoles</option><option>jueves</option><option>viernes</option><option>sábado</option><option>domingo</option></select></label>
+        <button class="btn btn-forest" type="submit">Preparar mensaje de WhatsApp</button>
+      </form>
+      <div class="preview" id="preview" hidden aria-live="polite">
+        <strong>Mensaje listo</strong>
+        <div class="bubble" id="msg"></div>
+        <small>En el sitio real, este botón abre WhatsApp con el mensaje listo para la clínica.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visitenos">
+  <div class="wrap visit">
+    <div><h3>Horario</h3><p>Abierto las 24 horas, todos los días.</p></div>
+    <div><h3>Dirección</h3><p>Cl. 150a #103c-92, frente al C.C. Plaza Imperial, Suba, Bogotá.</p></div>
+    <div><h3>Contacto</h3><p>300 7749405<br>4,3 ★ con 297 reseñas en Google.</p></div>
+  </div>
+</section>
+
+<footer><div class="wrap">Centro de Urgencias Veterinarias Suba CUVS · Propuesta de diseño preparada por Faro Estudio Digital</div></footer>
+
+<div class="sos"><span>¿Urgencia con su mascota?</span><button type="button" data-sos>Llamar ahora</button></div>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+const PLANES = {
+  perro: [
+    ["6 a 8 semanas", "Primera vacuna para cachorros (parvovirus y moquillo)"],
+    ["10 a 12 semanas", "Polivalente, segunda dosis"],
+    ["14 a 16 semanas", "Polivalente, tercera dosis y antirrábica"],
+    ["Cada año", "Refuerzo polivalente y antirrábica"]
+  ],
+  gato: [
+    ["8 semanas", "Triple felina, primera dosis"],
+    ["12 semanas", "Triple felina, segunda dosis y leucemia felina"],
+    ["16 semanas", "Antirrábica"],
+    ["Cada año", "Refuerzo triple felina y antirrábica"]
+  ]
+};
+const body = document.getElementById("plan-body");
+function show(pet){
+  body.innerHTML = PLANES[pet].map(([edad, vac], i) =>
+    `<tr><td>${edad}</td><td>${vac}${i === PLANES[pet].length - 1 ? ' <span class="stamp">refuerzo</span>' : ""}</td></tr>`).join("");
+  document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.pet === pet)));
+}
+document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => show(b.dataset.pet)));
+show("perro");
+
+const toast = document.getElementById("toast");
+let t;
+document.querySelectorAll("[data-sos]").forEach(b => b.addEventListener("click", () => {
+  toast.textContent = "En el sitio real, este botón llama directamente a CUVS.";
+  toast.hidden = false; clearTimeout(t); t = setTimeout(() => toast.hidden = true, 4000);
+}));
+
+document.getElementById("form").addEventListener("submit", e => {
+  e.preventDefault();
+  const d = new FormData(e.target);
+  const msg = `Hola, soy ${d.get("nombre").trim()}. Quiero agendar ${d.get("motivo")} para mi ${d.get("especie")} ${d.get("mascota").trim()}, preferiblemente el ${d.get("dia")}.`;
+  document.getElementById("msg").textContent = msg;
+  document.getElementById("preview").hidden = false;
+});
+</script>
+</body>
+</html>

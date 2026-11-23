@@ -6,7 +6,13 @@
 <title>Faro Estudio Digital · Páginas web para negocios en Colombia</title>
 <meta name="description" content="Estudio 100% en línea. Páginas web, perfil de Google y automatizaciones para consultorios, veterinarias y restaurantes de toda Colombia. Lista en 5 días, desde $790.000.">
 <meta property="og:title" content="Faro Estudio Digital">
-<meta property="og:description" content="Que lo encuentren cuando lo buscan. Páginas web para negocios de toda Colombia desde $790.000, todo por WhatsApp.">
+<meta property="og:description" content="Páginas web para negocios de toda Colombia. Vea la suya gratis antes de pagar. Desde $790.000, todo por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://faroestudioweb.github.io/">
+<meta property="og:image" content="https://faroestudioweb.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E1A3A'/%3E%3Cpath d='M13 13h6l2 15H11z' fill='%23F5F6F1'/%3E%3Crect x='12.5' y='9' width='7' height='4' rx='1' fill='%23FFC83D'/%3E%3Cpath d='M19.5 11L30 7v8z' fill='%23FFC83D'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,6 +106,31 @@ section{padding:96px 0}
 .split{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
 @media (max-width:880px){.split{grid-template-columns:1fr;gap:28px} section{padding:72px 0}}
 .intro p{margin-top:18px;color:var(--slate)}
+
+/* Free trial band: the promise that removes the risk */
+.trial{background:var(--beam);color:var(--ink)}
+.trial-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.trial p{margin:18px 0 28px;font-size:1.12rem}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:var(--ink-2)}
+.postcard{justify-self:center;width:min(100%,420px);aspect-ratio:1200/630;background:var(--ink);color:var(--paper);border-radius:18px;padding:26px 28px;position:relative;overflow:hidden;transform:rotate(-2.5deg);box-shadow:0 24px 50px -20px rgba(14,26,58,.55)}
+.postcard::after{content:"";position:absolute;right:-60px;top:-70px;width:220px;height:220px;border-radius:46% 54% 40% 60%/55% 42% 58% 45%;background:#24407A}
+.postcard span{display:block;position:relative;z-index:1}
+.pc-for{color:var(--beam);font-weight:650;font-size:.9rem}
+.pc-name{font-weight:800;font-stretch:125%;font-size:2.1rem;line-height:1.05;margin-top:2px}
+.pc-sub{font-size:.95rem;opacity:.9;margin-top:6px}
+.pc-chip{position:absolute!important;left:28px;bottom:22px;background:var(--beam);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:.78rem;font-weight:700}
+@media (max-width:880px){.trial-grid{grid-template-columns:1fr;gap:36px}}
+
+/* About */
+.about{background:var(--white);border-block:1px solid var(--line)}
+.about-text .big{font-size:1.45rem;line-height:1.35;font-weight:650;color:var(--ink);max-width:34ch}
+.about-text p{margin-top:16px;color:var(--slate)}
+.pledges{list-style:none;margin-top:24px;display:grid;gap:12px}
+.pledges li{padding-left:30px;position:relative;color:var(--slate)}
+.pledges li b{color:var(--ink)}
+.pledges li::before{content:"";position:absolute;left:0;top:.35em;width:18px;height:18px;border-radius:50%;background:var(--beam)}
+.about-text .sign{margin-top:24px;font-weight:700;font-stretch:115%;color:var(--ink)}
 
 /* Services list */
 .services{list-style:none;border-top:2px solid var(--ink)}
@@ -197,7 +228,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
         <h1>Cuando alguien busca su negocio en Google, ¿qué encuentra?</h1>
         <p class="lede">Hacemos páginas web, perfiles de Google y pequeñas automatizaciones para consultorios, veterinarias y restaurantes de toda Colombia. Todo se hace por WhatsApp: su página lista en 5 días hábiles, desde $790.000.</p>
         <div class="hero-actions">
-          <a class="btn btn-beam" data-wa href="#contacto">Pedir una propuesta por WhatsApp</a>
+          <a class="btn btn-beam" data-wa href="#contacto">Ver mi página de prueba gratis</a>
           <a class="btn btn-line" href="#ejemplos">Ver ejemplos</a>
         </div>
         <ul class="promises">
@@ -222,6 +253,22 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 </div>
 
 <main>
+  <section id="prueba" class="trial">
+    <div class="wrap trial-grid">
+      <div>
+        <h2>Primero ve su página. Después decide.</h2>
+        <p>Antes de pagar un peso, le preparamos una versión de prueba con el nombre de su negocio, su dirección y lo que sus clientes dicen de usted en Google. La abre en su celular. Si le gusta, seguimos. Si no, no pasa nada y no nos debe nada.</p>
+        <a class="btn btn-ink" data-wa href="#contacto">Quiero ver la mía</a>
+      </div>
+      <div class="postcard" aria-hidden="true">
+        <span class="pc-for">Hecha para</span>
+        <span class="pc-name">Su negocio</span>
+        <span class="pc-sub">Así se vería su página web</span>
+        <span class="pc-chip">★ 4,9 · sus reseñas en Google</span>
+      </div>
+    </div>
+  </section>
+
   <section id="servicios">
     <div class="wrap split">
       <div class="intro">
@@ -335,11 +382,27 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <div class="wrap">
       <h2>Cómo trabajamos</h2>
       <ol class="steps">
-        <li><h3>Conversamos</h3><p>15 minutos por WhatsApp o videollamada. Le enviamos una propuesta con precio fijo el mismo día.</p></li>
+        <li><h3>Le mostramos su página de prueba</h3><p>Gratis y con el nombre de su negocio. Si le gusta, le enviamos una propuesta con precio fijo.</p></li>
         <li><h3>Nos cuenta de su negocio</h3><p>Responde un cuestionario sencillo y nos manda fotos y logo. Paga el 50%.</p></li>
         <li><h3>Revisa la primera versión</h3><p>La ve en su celular en pocos días y nos pide cambios. Dos rondas incluidas.</p></li>
         <li><h3>Publicamos</h3><p>Paga el 50% restante, conectamos su dominio y su perfil de Google, y queda en línea.</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section id="nosotros" class="about">
+    <div class="wrap split">
+      <div class="intro"><h2>Quiénes somos</h2></div>
+      <div class="about-text">
+        <p class="big">Faro existe por una razón: hay negocios muy buenos que la gente no encuentra en internet.</p>
+        <p>Somos un estudio pequeño y trabajamos 100% en línea con consultorios, veterinarias y restaurantes de toda Colombia. Usted habla siempre con la misma persona, por WhatsApp, y le respondemos el mismo día. Y no le vendemos lo que no necesita: si a su negocio le basta una página sencilla, eso le recomendamos.</p>
+        <ul class="pledges">
+          <li><b>Ve su página antes de pagar.</b> La versión de prueba es gratis, y el saldo se paga solo cuando usted aprueba.</li>
+          <li><b>Todo queda a su nombre.</b> El dominio, la página y los textos son suyos.</li>
+          <li><b>Precio fijo.</b> Lo que dice la propuesta es lo que paga, sin cobros sorpresa.</li>
+        </ul>
+        <p class="sign">El equipo de Faro</p>
+      </div>
     </div>
   </section>
 
@@ -348,6 +411,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       <div class="intro"><h2>Preguntas frecuentes</h2><p>¿No encuentra su pregunta? Escríbanos por WhatsApp y le respondemos el mismo día.</p></div>
       <div class="faq">
         <details><summary>¿Dónde están ubicados?</summary><p>Somos un estudio 100% en línea. Trabajamos por WhatsApp, correo y videollamada con negocios de toda Colombia. No pagamos oficina, y por eso nuestros precios son más bajos.</p></details>
+        <details><summary>¿La página de prueba cuesta algo?</summary><p>No. La preparamos gratis para que vea cómo quedaría su negocio antes de decidir. Si no le convence, no paga nada.</p></details>
         <details><summary>¿Tengo que pagar una mensualidad?</summary><p>No. Paga la página una sola vez. El plan Siempre al Día es opcional y lo puede cancelar cuando quiera.</p></details>
         <details><summary>¿La página y el dominio son míos?</summary><p>Sí. El dominio se registra a su nombre y, una vez paga el total, la página es suya. Si algún día quiere irse, le entregamos todos los archivos.</p></details>
         <details><summary>¿Cuánto cuesta tenerla en internet?</summary><p>Solo el dominio, entre $50.000 y $150.000 al año según la terminación (.com, .co o .com.co). El alojamiento está incluido sin costo mensual.</p></details>
@@ -386,7 +450,7 @@ const CONTACT = {
   whatsapp: "57XXXXXXXXXX",            // e.g. "573001234567" (country code + number, no spaces)
   email: "faroestudioweb@gmail.com"    // switch to hola@<your domain> once the domain is set up
 };
-const WA_TEXT = "Hola, vi su página y quiero información sobre una página web para mi negocio.";
+const WA_TEXT = "Hola, quiero ver una página de prueba gratis para mi negocio.";
 
 (function setupContact(){
   const ready = /^\d{11,13}$/.test(CONTACT.whatsapp);
