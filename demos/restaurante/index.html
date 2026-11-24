@@ -133,6 +133,7 @@ footer{background:var(--coffee);color:#D9C4A8;padding:26px 0;font-size:.9rem}
     <h2>Menú de la semana</h2>
     <p style="color:var(--muted);margin-top:10px">El tablero de arriba cambia solo según el día. El restaurante actualiza el menú desde una hoja de Google, sin llamar a nadie.</p>
     <ul class="days" id="days"></ul>
+    <p id="fuente" style="color:var(--muted);margin-top:14px;font-size:.9rem" aria-live="polite"></p>
   </div>
 </section>
 
@@ -196,8 +197,10 @@ footer{background:var(--coffee);color:#D9C4A8;padding:26px 0;font-size:.9rem}
 <div class="mantel" aria-hidden="true"></div>
 <footer><div class="wrap">Fogón de la 45 · Restaurante ficticio para demostración · Diseño: Folio Estudio Digital</div></footer>
 
+<script src="hoja.js"></script>
 <script>
-/* In a real client site this array is read from a published Google Sheet, so the owner edits the menu there. */
+/* The menu is read live from a published Google Sheet (08-automations/hoja-a-pagina). This copy is only the fallback. */
+const HOJA_MENU = "https://docs.google.com/spreadsheets/d/e/2PACX-1vThj5Zf_bmRmNBlSA7sHnbwywTaSyrKOKE7YCzDdQVr3LdY3xagi1oMQSdUVhuTn5ibWeC3_kgyrAJw/pub?gid=0&single=true&output=csv";
 const MENU = [
   null, // domingo: cerrado
   { dia: "lunes",     sopa: "Sopa de pasta",        seco: "Carne en bistec",               principio: "Frijoles",  jugo: "Mora",       postre: "Gelatina" },
@@ -208,31 +211,57 @@ const MENU = [
   { dia: "sábado",    especial: "Ajiaco santafereño", seco: "Con pollo, arroz, aguacate, crema y alcaparras", jugo: "Lulo", postre: "Postre de natas", precio: "$24.000" }
 ];
 const ACOMP = "Arroz, ensalada y maduro";
+const DIAS = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const esc = s => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const sinTildes = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").trim().toLowerCase();
 
-(function board(){
+function board(menu){
   const now = new Date();
   let idx = now.getDay();
   const fecha = now.toLocaleDateString("es-CO", { weekday: "long", day: "numeric", month: "long" });
   const dayEl = document.getElementById("board-day");
-  if (MENU[idx] === null) { dayEl.textContent = "Hoy domingo estamos cerrados. Mañana lunes:"; idx = 1; }
-  else dayEl.textContent = "Hoy, " + fecha;
-  const m = MENU[idx];
+  if (!menu[idx]) {
+    let n = 1; while (n < 7 && !menu[(idx + n) % 7]) n++;
+    idx = (idx + n) % 7;
+    dayEl.textContent = "Hoy " + DIAS[now.getDay()] + " estamos cerrados. " + cap(n === 1 ? "mañana " : "el ") + DIAS[idx] + ":";
+  } else dayEl.textContent = "Hoy, " + fecha;
+  const m = menu[idx];
   const rows = m.especial
     ? [["Especial", m.especial], ["Incluye", m.seco], ["Jugo", m.jugo], ["Postre", m.postre]]
     : [["Sopa", m.sopa], ["Seco", m.seco], ["Principio", m.principio], ["Acompañamiento", ACOMP], ["Jugo natural", m.jugo], ["Postre", m.postre]];
-  document.getElementById("board-title").textContent = m.especial ? "Sábado de ajiaco" : "Almuerzo del " + m.dia;
-  document.getElementById("board-list").innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
-  if (m.precio) document.getElementById("board-price").textContent = m.precio;
+  document.getElementById("board-title").textContent = m.especial ? cap(m.dia) + " de " + String(m.especial).trim().split(/\s+/)[0].toLowerCase() : "Almuerzo del " + m.dia;
+  document.getElementById("board-list").innerHTML = rows.filter(([, v]) => v).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("");
+  document.getElementById("board-price").textContent = m.precio || "$18.000";
 
   const today = now.getDay();
-  document.getElementById("days").innerHTML = MENU.slice(1).map((d, i) =>
-    `<li class="${i + 1 === today ? "today" : ""}"><b>${cap(d.dia)}</b><span>${d.especial || d.seco}</span><small>${d.sopa || d.seco}</small></li>`
+  document.getElementById("days").innerHTML = menu.map((d, i) => d ? [d, i] : null).filter(Boolean).filter(([, i]) => i > 0).concat(menu[0] ? [[menu[0], 0]] : []).map(([d, i]) =>
+    `<li class="${i === today ? "today" : ""}"><b>${cap(esc(d.dia))}</b><span>${esc(d.especial || d.seco)}</span><small>${esc(d.sopa || d.seco)}</small></li>`
   ).join("");
 
   const sel = document.getElementById("dia");
-  sel.innerHTML = ["Hoy", "Mañana", ...MENU.slice(1).map(d => cap(d.dia))].map(o => `<option>${o}</option>`).join("");
-})();
+  const elegido = sel.value;
+  sel.innerHTML = ["Hoy", "Mañana", ...menu.filter(Boolean).map(d => cap(d.dia))].map(o => `<option>${esc(o)}</option>`).join("");
+  if (elegido) sel.value = elegido;
+}
+
+/* The sheet has one row per day: dia, sopa, seco, principio, jugo, postre, especial, precio. A missing day = closed. */
+function menuDesdeHoja(filas){
+  const menu = [null, null, null, null, null, null, null];
+  filas.forEach(f => {
+    const i = DIAS.map(sinTildes).indexOf(sinTildes(f.dia));
+    if (i >= 0 && (f.seco || f.especial)) menu[i] = Object.assign({}, f, { dia: DIAS[i] });
+  });
+  return menu.some(Boolean) ? menu : null;
+}
+
+board(MENU);
+leerHojaFolio(HOJA_MENU).then(filas => {
+  const menu = menuDesdeHoja(filas);
+  if (!menu) return;
+  board(menu);
+  document.getElementById("fuente").textContent = "Este menú se acaba de leer de la hoja de Google del restaurante.";
+}).catch(() => { /* sin conexión con la hoja: queda el menú escrito en la página */ });
 
 document.getElementById("form").addEventListener("submit", e => {
   e.preventDefault();
