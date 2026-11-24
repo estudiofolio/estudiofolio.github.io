@@ -15,7 +15,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,7 +96,7 @@ p{max-width:62ch}
 .btn .arr{transition:transform .2s ease}
 .btn:hover .arr{transform:translateX(4px)}
 
-/* ===== Intro: the lighthouse switches on ===== */
+/* ===== Intro: the page goes to press ===== */
 .loader{display:none}
 .intro .loader{display:grid;place-items:center;position:fixed;inset:0;z-index:100;background:var(--ink);animation:lift .8s cubic-bezier(.7,0,.2,1) 1.35s forwards}
 .loader svg{width:min(62vw,320px);overflow:visible}
@@ -111,7 +112,7 @@ p{max-width:62ch}
 .bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .pill{pointer-events:auto;background:rgba(var(--deep-rgb),.86);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,.12);border-radius:999px;box-shadow:0 12px 32px -14px rgba(0,0,0,.5)}
 .brand{display:flex;align-items:center;gap:12px;padding:10px 18px 10px 18px;text-decoration:none;color:var(--paper)}
-.brand .logo{width:72px;height:auto;overflow:visible}
+.brand .logo{width:78px;height:auto;overflow:visible}
 .brand span{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);border-left:1px solid rgba(255,255,255,.18);padding-left:12px;line-height:1.25}
 .navpill{display:flex;align-items:center;gap:2px;padding:5px}
 .navpill a,.menu-btn{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;color:var(--on-dark);text-decoration:none;padding:9px 14px;border-radius:999px;transition:background-color .2s,color .2s;background:none;border:0;cursor:pointer}
@@ -128,14 +129,34 @@ p{max-width:62ch}
 @media (max-width:960px){.navpill a:not(.wa){display:none}.menu-btn{display:inline-flex}}
 @media (max-width:520px){.brand span{display:none}.brand{padding:10px 16px}.navpill a.wa span{display:none}}
 
-/* ===== Night: hero lit by the logo's own lamp ===== */
+/* ===== Night: the hero is a printed page (Folio = a page, in print) ===== */
 .night{background:var(--grain),radial-gradient(120% 80% at 8% 0%,var(--glow) 0%,var(--ink) 58%);color:var(--paper);position:relative;overflow:hidden;padding-top:92px}
-.beam{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .6s ease;clip-path:polygon(0 0,0 0,0 0)}
-.beam.core{background:radial-gradient(circle 1700px at var(--lx,0) var(--ly,0),rgba(var(--beam-rgb),.36),rgba(var(--beam-rgb),.17) 30%,rgba(var(--beam-rgb),.06) 65%,rgba(var(--beam-rgb),0) 100%)}
-.beam.halo{background:radial-gradient(circle 1700px at var(--lx,0) var(--ly,0),rgba(var(--beam-rgb),.12),rgba(var(--beam-rgb),.04) 50%,rgba(var(--beam-rgb),0) 100%)}
-.night.on .beam{opacity:1}
 .night .wrap{position:relative;z-index:1}
-.hero{display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:center;padding:48px 0 130px}
+.hero{display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:center;padding:48px 0 130px;position:relative}
+/* Print production marks: crop marks, registration targets, colour bar, page number */
+.marks{position:absolute;inset:28px -6px 70px;pointer-events:none}
+.crop{position:absolute;width:34px;height:34px}
+.crop::before,.crop::after{content:"";position:absolute;background:rgba(241,236,226,.42)}
+.crop::before{width:1px;height:24px} .crop::after{width:24px;height:1px}
+.crop.tl{left:-34px;top:-34px} .crop.tl::before{left:34px;top:0} .crop.tl::after{left:0;top:34px}
+.crop.tr{right:-34px;top:-34px} .crop.tr::before{left:-1px;top:0} .crop.tr::after{right:0;top:34px}
+.crop.bl{left:-34px;bottom:-34px} .crop.bl::before{left:34px;bottom:0} .crop.bl::after{left:0;bottom:34px}
+.crop.br{right:-34px;bottom:-34px} .crop.br::before{left:-1px;bottom:0} .crop.br::after{right:0;bottom:34px}
+.reg{position:absolute;top:50%;width:22px;height:22px;margin-top:-11px;border:1px solid rgba(241,236,226,.42);border-radius:50%}
+.reg::before,.reg::after{content:"";position:absolute;background:rgba(241,236,226,.42)}
+.reg::before{left:50%;top:-7px;bottom:-7px;width:1px} .reg::after{top:50%;left:-7px;right:-7px;height:1px}
+.reg.l{left:-46px} .reg.r{right:-46px}
+.cbar{position:absolute;left:0;bottom:-48px;display:flex;gap:0}
+.cbar i{width:14px;height:14px;border:1px solid rgba(241,236,226,.25)}
+.cbar i:nth-child(1){background:var(--ink)} .cbar i:nth-child(2){background:var(--paper)}
+.cbar i:nth-child(3){background:var(--beam)} .cbar i:nth-child(4){background:rgba(var(--beam-rgb),.5)}
+.folio-no{position:absolute;left:74px;bottom:-46px;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mist)}
+@media (prefers-reduced-motion:no-preference){
+  .js .marks>*{opacity:0;animation:on .7s ease forwards;animation-delay:calc(var(--d) + .2s)}
+  .js .marks .crop{animation-delay:calc(var(--d) + .1s)}
+}
+@media (max-width:1300px){.crop,.reg{display:none}}
+@media (max-width:960px){.marks{inset:auto 0 70px}.cbar{bottom:-40px}.folio-no{bottom:-38px;left:70px;font-size:.64rem}}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.76rem;letter-spacing:.05em;text-transform:uppercase;color:var(--on-dark-2);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:7px 14px;margin-bottom:24px}
 .eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--beam);box-shadow:0 0 10px 2px rgba(var(--beam-rgb),.7);animation:blinkdot 2.4s ease-in-out infinite}
 @keyframes blinkdot{50%{opacity:.35}}
@@ -145,9 +166,19 @@ p{max-width:62ch}
 .lit u{text-decoration:none;position:relative;white-space:nowrap}
 .lit u::after{content:"";position:absolute;left:-2%;right:-3%;bottom:-.1em;height:.26em;clip-path:inset(0 100% 0 0);
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 11C45 4 90 14 130 8s52-5 67-2' fill='none' stroke='%23FF4F1F' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;
-  animation:draw .9s cubic-bezier(.6,0,.2,1) forwards;animation-delay:calc(var(--d) + 2.4s)}
+  animation:draw .9s cubic-bezier(.6,0,.2,1) forwards;animation-delay:calc(var(--d) + 2.3s)}
 @keyframes draw{to{clip-path:inset(0 0 0 0)}}
-.lit-glow{position:absolute;left:0;top:0;width:100%;color:var(--beam);text-shadow:0 0 28px rgba(var(--beam-rgb),.45);clip-path:polygon(0 0,0 0,0 0);pointer-events:none}
+/* Two-plate print: the key plate (Hueso) feeds through the press, then the orange plate lands in register */
+.lit>span:first-child em{color:rgba(241,236,226,.14)}
+.plate{position:absolute;left:0;top:0;width:100%;color:transparent;pointer-events:none;transition:translate .25s ease-out}
+.plate em{color:var(--beam)}
+.plate u::after{display:none}
+@media (prefers-reduced-motion:no-preference){
+  .js .lit>span:first-child{clip-path:inset(0 0 100% 0);animation:feed 1.1s cubic-bezier(.65,0,.25,1) forwards;animation-delay:calc(var(--d) + .35s)}
+  .js .plate{opacity:0;transform:translate(26px,-16px) rotate(-1.4deg);animation:register 1s cubic-bezier(.2,1.5,.35,1) forwards;animation-delay:calc(var(--d) + 1.35s)}
+}
+@keyframes feed{to{clip-path:inset(0 0 -10% 0)}}
+@keyframes register{0%{opacity:0}35%{opacity:1}100%{opacity:1;transform:none}}
 .hero .lede{margin:28px 0 34px;color:var(--on-dark)}
 .hero .lede b{color:#fff;font-weight:650}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
@@ -540,8 +571,8 @@ html:not(.js) .scroll-hint{display:none}
 <body>
 
 <div class="loader" aria-hidden="true">
-  <!--logo:loader--><svg viewBox="-4 0 206 104" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#F1ECE2" stroke-width="12"><path stroke-linecap="round" d="M14 33A23 23 0 0 1 37 10H42"/><path d="M2 50H31"/><path d="M41 73a21 21 0 1 0 42 0a21 21 0 1 0 -42 0M149 73a21 21 0 1 0 42 0a21 21 0 1 0 -42 0"/><path d="M14 100V32 M105 10V100 M127 46V100"/></g><circle class="fl-lit" cx="127" cy="24" r="8" fill="#FF4F1F"/></svg><!--/logo:loader-->
-  <span class="msg">Abriendo su página…</span><span class="count" id="count">000</span>
+  <!--logo:loader--><svg viewBox="0 0 200 92" xmlns="http://www.w3.org/2000/svg"><text x="2" y="76" font-size="100" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-weight="600" style="font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0" fill="#F1ECE2" textLength="194" lengthAdjust="spacing">Folio<tspan class="fl-lit" fill="#FF4F1F">.</tspan></text></svg><!--/logo:loader-->
+  <span class="msg">Entrando en prensa…</span><span class="count" id="count">000</span>
 </div>
 <script>
 if (document.documentElement.classList.contains("intro")) {
@@ -553,7 +584,7 @@ if (document.documentElement.classList.contains("intro")) {
 <header class="bar" id="bar">
   <div class="wrap">
     <a class="brand pill" href="#inicio" aria-label="Folio Estudio Digital, inicio">
-      <!--logo:header--><svg viewBox="-4 0 206 104" xmlns="http://www.w3.org/2000/svg" class="logo" aria-hidden="true"><g fill="none" stroke="#F1ECE2" stroke-width="12"><path stroke-linecap="round" d="M14 33A23 23 0 0 1 37 10H42"/><path d="M2 50H31"/><path d="M41 73a21 21 0 1 0 42 0a21 21 0 1 0 -42 0M149 73a21 21 0 1 0 42 0a21 21 0 1 0 -42 0"/><path d="M14 100V32 M105 10V100 M127 46V100"/></g><circle id="lamp" cx="127" cy="24" r="8" fill="#FF4F1F"/></svg><!--/logo:header-->
+      <!--logo:header--><svg viewBox="0 0 200 92" xmlns="http://www.w3.org/2000/svg" class="logo" aria-hidden="true"><text x="2" y="76" font-size="100" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-weight="600" style="font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0" fill="#F1ECE2" textLength="194" lengthAdjust="spacing">Folio<tspan id="lamp" fill="#FF4F1F">.</tspan></text></svg><!--/logo:header-->
       <span>Estudio<br>digital</span>
     </a>
     <nav class="navpill pill" aria-label="Principal">
@@ -577,13 +608,17 @@ if (document.documentElement.classList.contains("intro")) {
 </header>
 
 <div class="night" id="inicio">
-  <div class="beam halo" aria-hidden="true"></div>
-  <div class="beam core" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero">
+      <div class="marks" aria-hidden="true">
+        <i class="crop tl"></i><i class="crop tr"></i><i class="crop bl"></i><i class="crop br"></i>
+        <i class="reg l"></i><i class="reg r"></i>
+        <span class="cbar"><i></i><i></i><i></i><i></i></span>
+        <span class="folio-no">Folio Nº 001 · Bogotá · 2026</span>
+      </div>
       <div>
         <p class="eyebrow"><i></i>Estudio web 100% en línea · Colombia</p>
-        <h1 class="lit" id="lit"><span>Que lo encuentren. <em>Que le <u>escriban</u>.</em></span><span class="lit-glow" aria-hidden="true">Que lo encuentren. <em>Que le <u>escriban</u>.</em></span></h1>
+        <h1 class="lit" id="lit"><span>Que lo encuentren. <em>Que le <u>escriban</u>.</em></span><span class="plate" aria-hidden="true">Que lo encuentren. <em>Que le <u>escriban</u>.</em></span></h1>
         <p class="lede">Páginas web, perfil de Google y automatizaciones para consultorios, veterinarias y restaurantes. Cada página tiene una sola meta: <b>que sus clientes le escriban</b>. La suya la ve gratis, antes de pagar.</p>
         <div class="hero-actions">
           <a class="btn btn-beam" href="#pruebe" data-focus-maker>Ver cómo se vería la mía <span class="arr" aria-hidden="true">→</span></a>
@@ -933,7 +968,7 @@ if (document.documentElement.classList.contains("intro")) {
         <a href="privacidad.html">Privacidad</a>
       </nav>
     </div>
-    <div class="giant"><img src="img/folio-logo.svg" width="206" height="104" alt="Folio"></div>
+    <div class="giant"><img src="img/folio-logo.png" width="800" height="368" alt="Folio"></div>
   </div>
 </footer>
 
@@ -978,56 +1013,16 @@ const introDelay = document.documentElement.classList.contains("intro") ? 1350 :
   document.querySelectorAll(".night[id], main section[id]").forEach(s => io.observe(s));
 })();
 
-/* ==== Hero: the logo's lamp lights the headline, like it lights "aro" in the logo ==== */
-(function lighthouse(){
-  const night = document.querySelector(".night"), lamp = document.getElementById("lamp"),
-        h1 = document.getElementById("lit"), glow = h1.querySelector(".lit-glow"),
-        core = night.querySelector(".beam.core"), halo = night.querySelector(".beam.halo");
-  const R = 6000;
-  let G = null, done = false;
-
-  function measure(){
-    const n = night.getBoundingClientRect(), l = lamp.getBoundingClientRect(), h = h1.getBoundingClientRect();
-    // The lamp sits in the fixed bar: place it where it is when the page is at the top.
-    const L = { x: l.left + l.width / 2 - n.left, y: l.top + l.height / 2 - (n.top + window.scrollY) };
-    const H = { x: h.left - n.left, y: h.top - n.top, w: h.width, h: h.height };
-    // Lower edge cuts the headline diagonally; upper edge passes above it.
-    const lo = Math.atan2(H.y + H.h * 1.02 - L.y, H.x + H.w * 0.5 - L.x);
-    const overTop = Math.atan2(H.y - L.y, H.x + H.w - L.x) - 0.05;
-    const hi = Math.max(Math.min(lo - 0.42, overTop), 0.1);
-    G = { L, H, lo, hi };
-    night.style.setProperty("--lx", L.x + "px");
-    night.style.setProperty("--ly", L.y + "px");
-  }
-  function poly(a, b, ox, oy){
-    const L = G.L, p = t => (L.x + R * Math.cos(t) - ox).toFixed(1) + "px " + (L.y + R * Math.sin(t) - oy).toFixed(1) + "px";
-    return "polygon(" + (L.x - ox).toFixed(1) + "px " + (L.y - oy).toFixed(1) + "px," + p(a) + "," + p(b) + ")";
-  }
-  function draw(a, b){
-    core.style.clipPath = poly(a, b, 0, 0);
-    halo.style.clipPath = poly(a - 0.07, b + 0.07, 0, 0);
-    glow.style.clipPath = poly(a, b, G.H.x, G.H.y);
-  }
-  function start(){
-    measure();
-    night.classList.add("on");
-    if (reduceMotion) { draw(G.hi, G.lo); done = true; return; }
-    const a0 = G.hi - 1.1, b0 = G.hi - 1.0, t0 = performance.now(), dur = 2200;
-    const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    (function frame(now){
-      const t = Math.min(1, (now - t0) / dur), e = ease(t);
-      draw(a0 + (G.hi - a0) * e, b0 + (G.lo - b0) * e);
-      if (t < 1) requestAnimationFrame(frame); else done = true;
-    })(t0);
-  }
-  let rz;
-  window.addEventListener("resize", () => {
-    clearTimeout(rz);
-    rz = setTimeout(() => { if (!done) return; measure(); draw(G.hi, G.lo); }, 120);
+/* ==== Hero: the orange plate follows the mouse a little, like a press slightly out of register ==== */
+(function press(){
+  const hero = document.querySelector(".hero"), plate = document.querySelector(".plate");
+  if (!hero || !plate || reduceMotion || !matchMedia("(hover: hover)").matches) return;
+  hero.addEventListener("pointermove", e => {
+    const r = hero.getBoundingClientRect();
+    const dx = (e.clientX - r.left) / r.width - .5, dy = (e.clientY - r.top) / r.height - .5;
+    plate.style.translate = (dx * 10).toFixed(1) + "px " + (dy * 6).toFixed(1) + "px";
   });
-  const go = () => setTimeout(start, 250 + introDelay);
-  if (document.fonts && document.fonts.ready) Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]).then(go);
-  else go();
+  hero.addEventListener("pointerleave", () => { plate.style.translate = "0 0"; });
 })();
 
 /* ==== Manifesto: words light up as it scrolls through the screen ==== */
