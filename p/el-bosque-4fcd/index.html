@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Young+Serif&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
 <style>
 :root{--teal:#1F4D2E;--teal-2:#2E6B41;--mint:#CFE8C9;--mint-2:#EAF5E6;--porcelain:#F6F8F3;--white:#fff;--gray:#56706E;--line:#D3E2DE}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -103,13 +103,89 @@ input:focus,select:focus,textarea:focus{border-color:var(--teal-2);outline:none;
 .hours li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);max-width:380px}
 .map{border:0;width:100%;height:340px;border-radius:18px;background:var(--mint-2)}
 footer{padding:30px 0;color:var(--gray);font-size:.9rem;border-top:1px solid var(--line)}
-.hello{background:var(--teal);color:#fff;font-size:.95rem;padding:12px 16px;line-height:1.5}.hello-in{max-width:1120px;margin:0 auto}.hello a{color:inherit;font-weight:700}.hello .hello-cta{display:inline-block;background:#25D366;color:#073B1E;text-decoration:none;border-radius:999px;padding:2px 12px;margin:2px 0}.voices{padding:64px 0;background:var(--mint-2)}.voices blockquote{font-family:'Young Serif',serif;font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.2;max-width:30ch}.voices figcaption{margin-top:16px;color:var(--gray);font-size:.95rem}
+
+.hello{background:var(--teal);color:#fff;font-size:.93rem;line-height:1.5;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.14)}
+.hello-in{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 16px}
+.hello-in>span{max-width:70ch}
+@media (max-width:560px){.hello-more{display:none}}
+.intro-cap span,.folio-next h2{text-wrap:balance}
+.hello-cta{display:inline-block;background:#25D366;color:#073B1E;font-weight:800;text-decoration:none;border-radius:999px;padding:4px 14px;white-space:nowrap}
+.voices{padding:64px 0;background:var(--mint-2)}
+.voices blockquote{font-family:'Young Serif',serif;font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.2;max-width:30ch}
+.voices figcaption{margin-top:16px;color:var(--gray);font-size:.95rem}
+
+/* Opening moment: their Google Maps listing gets the website it's missing */
+.intro{display:none}
+.js .intro{display:grid;position:fixed;inset:0;z-index:50;place-items:center;padding:20px;background:var(--teal);color:#fff;transition:opacity .6s ease;overflow:auto}
+.lock{overflow:hidden}
+.intro-in{width:min(100%,420px);display:grid;gap:20px;text-align:center}
+.intro-cap{position:relative;min-height:2.6em;font-family:'Young Serif',serif;font-size:clamp(1.35rem,5vw,1.75rem);line-height:1.15;max-width:none}
+.intro-cap span{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .5s ease,transform .5s ease}
+.intro-cap .cap-b{opacity:0;transform:translateY(10px)}
+.intro.b .cap-a{opacity:0;transform:translateY(-10px)}
+.intro.b .cap-b{opacity:1;transform:none}
+.listing{background:#fff;color:#202124;border-radius:18px;overflow:hidden;text-align:left;font-family:'Figtree',system-ui,sans-serif;
+  box-shadow:0 34px 70px -30px rgba(0,0,0,.65);opacity:0;transform:translateY(28px);transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .5s ease}
+.intro.in .listing,.intro.b .listing{opacity:1;transform:none}
+.listing-map{display:block;width:100%;height:auto}
+.m-bg{fill:var(--mint-2)}.m-park{fill:var(--mint);opacity:.55}.m-road{stroke:#fff;stroke-width:9;fill:none}.m-wide{stroke-width:16}.m-pin{fill:var(--teal)}
+.listing-body{padding:14px 18px 18px}
+.listing-name{display:block;font-size:1.2rem;line-height:1.25;font-weight:800}
+.listing-rate{display:flex;align-items:center;gap:6px;margin-top:4px;font-size:.92rem;color:#5F6368}
+.stars{letter-spacing:1px;background:linear-gradient(90deg,#F2A900 var(--r),#D9D6D0 var(--r));-webkit-background-clip:text;background-clip:text;color:transparent}
+.listing-meta{font-size:.9rem;color:#5F6368;margin-top:2px;max-width:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{position:relative;display:inline-flex;align-items:center;gap:6px;border:1.5px solid #DADCE0;border-radius:999px;padding:6px 13px;font-size:.88rem;font-weight:700;color:var(--teal)}
+.chip.web{border-style:dashed;color:#80868B;transition:background-color .45s ease,color .45s ease,border-color .45s ease}
+.chip.web .web-yes{display:none}
+.intro.b .chip.web{background:var(--teal);border:1.5px solid var(--teal);color:#fff}
+.intro.b .chip.web .web-no{display:none}
+.intro.b .chip.web .web-yes{display:inline-flex;align-items:center;gap:6px}
+.intro.b .chip.web::after{content:"";position:absolute;inset:-7px;border-radius:999px;border:2px solid var(--mint);opacity:0;animation:ping 1.1s ease-out .25s 2}
+@keyframes ping{from{opacity:.9;transform:scale(.88)}to{opacity:0;transform:scale(1.22)}}
+.intro-go{justify-self:center;font:inherit;font-family:'Figtree',system-ui,sans-serif;font-weight:800;background:#fff;color:var(--teal);border:0;border-radius:999px;
+  padding:.85em 1.5em;cursor:pointer;opacity:0;transform:translateY(8px);transition:opacity .4s ease .35s,transform .4s ease .35s}
+.intro.b .intro-go{opacity:1;transform:none}
+.intro-go:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+.intro-by{font-size:.85rem;opacity:.72;max-width:none}
+h1[tabindex="-1"]:focus{outline:none}
+.intro.out{opacity:0;pointer-events:none}
+.intro.out .listing{transform:scale(1.06)}
+
+/* Folio's closing note: clearly ours, not part of their site */
+.folio-next{background:#16130F;color:#F1ECE2;padding:88px 0}
+.next-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+@media (max-width:860px){.next-in{grid-template-columns:1fr;gap:34px}}
+.folio-mark{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.6rem;line-height:1}
+.folio-mark i{font-style:normal;color:#FF4F1F}
+.folio-next h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(2rem,4.4vw,3rem);line-height:1.05;letter-spacing:-.01em;margin:20px 0 14px;max-width:16ch}
+.folio-next p{color:rgba(241,236,226,.8)}
+.next-cta{display:inline-block;margin:26px 18px 0 0;background:#FF4F1F;color:#16130F;font-weight:800;text-decoration:none;border-radius:999px;padding:.85em 1.4em}
+.next-cta:hover{background:#F1ECE2}
+.next-link{display:inline-block;margin-top:26px;color:#F1ECE2;font-weight:700}
+.folio-next a:focus-visible{outline:3px solid #FF4F1F;outline-offset:3px}
+.next-steps{list-style:none;counter-reset:s;border-top:1px solid rgba(241,236,226,.2)}
+.next-steps li{counter-increment:s;display:grid;grid-template-columns:2.4rem 1fr;gap:2px 14px;padding:20px 0;border-bottom:1px solid rgba(241,236,226,.2)}
+.next-steps li::before{content:counter(s);grid-row:span 2;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.7rem;line-height:1;color:#FF4F1F}
+.next-steps span{color:rgba(241,236,226,.7);font-size:.97rem}
+
+.printer{position:relative}
+.slot{position:relative;z-index:2;height:18px;margin:0 -12px;border-radius:999px;background:var(--teal);box-shadow:inset 0 -5px 0 rgba(0,0,0,.28)}
+.paper{overflow:hidden;margin:-9px -28px 0;padding:0 28px 44px}
+.js .receipt{transform:translateY(-104%)}
+.printer.on .receipt{animation:print 1.8s cubic-bezier(.25,.75,.25,1) both}
+@keyframes print{from{transform:translateY(-104%)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.js .receipt{transform:none}.printer.on .receipt{animation:none}}
 </style>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-<div class="hello" role="note"><div class="hello-in"><strong>Hola, equipo de El Bosque.</strong> Hicimos esta página pensando en ustedes: así podría verse su sitio web. Fotos, colores, servicios y precios se ajustan a su gusto. <a class="hello-cta" href="https://wa.me/573001317394?text=Hola%2C%20vi%20la%20propuesta%20de%20p%C3%A1gina%20web%20para%20El%20Bosque%20y%20me%20interesa." target="_blank" rel="noopener">¿Le gusta? Escríbanos por WhatsApp</a> · <a href="https://estudiofolio.github.io">Folio Estudio Digital</a></div></div>
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-t">
+<div class="intro-in"><p class="intro-cap" id="intro-t"><span class="cap-a">Hoy, así encuentran a El Bosque en Google Maps</span><span class="cap-b">Y así, con su propia página web</span></p><div class="listing"><svg class="listing-map" viewBox="0 0 360 120" aria-hidden="true"><rect width="360" height="120" class="m-bg"/><rect x="262" y="58" width="78" height="44" rx="10" class="m-park"/><path d="M-10 22 370 34M60-10l46 140M226-10l22 140" class="m-road"/><path d="M-10 92 370 46" class="m-road m-wide"/><g transform="translate(178 70)"><path d="M0-40c-11.6 0-21 9-21 20.5C-21-4 0 12 0 12s21-16 21-31.5C21-31 11.6-40 0-40z" class="m-pin"/><circle cy="-20" r="7.5" fill="#fff"/></g></svg><div class="listing-body"><b class="listing-name">El Bosque</b><div class="listing-rate"><span>4,9</span><span class="stars" style="--r:98%" aria-label="4,9 de 5 estrellas">★★★★★</span><span>(121)</span></div><p class="listing-meta">Clínica dental · Cra. 69 #63A-78</p><div class="chips"><span class="chip">Llamar</span><span class="chip">Cómo llegar</span><span class="chip web"><span class="web-no">Sin sitio web</span><span class="web-yes"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5 5.5 10.5 11.5 3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sitio web</span></span></div></div></div><button class="intro-go" type="button">Ver la página de El Bosque</button><p class="intro-by">Una propuesta de Folio Estudio Digital</p></div>
+</div>
+<div class="hello" role="note"><div class="hello-in"><span><strong>Hola, equipo de El Bosque.</strong> Esta es una propuesta de página web hecha para ustedes.<span class="hello-more"> Fotos, colores, servicios y precios se ajustan a su gusto.</span></span><a class="hello-cta" href="https://wa.me/573001317394?text=Hola%2C%20vi%20la%20propuesta%20de%20p%C3%A1gina%20web%20para%20El%20Bosque%20y%20me%20interesa." target="_blank" rel="noopener">¿Le gusta? Escríbanos por WhatsApp</a></div></div>
 
-<div class="wrap">
+<div class="top"><div class="wrap">
   <header>
     <a class="logo" href="#">
       <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#CFE8C9"/><path d="M13 12c2.5-1.6 4.7-.6 7 .4 2.3-1 4.5-2 7-.4 2.6 1.7 2.2 5.5 1.3 8.3-.8 2.5-1.2 5.4-2 7.8-.5 1.4-2.2 1.4-2.6 0l-1.3-4.6c-.4-1.4-2.4-1.4-2.8 0l-1.3 4.6c-.4 1.4-2.1 1.4-2.6 0-.8-2.4-1.2-5.3-2-7.8-.9-2.8-1.3-6.6 1.3-8.3z" fill="#1F4D2E"/></svg>
@@ -134,7 +210,7 @@ footer{padding:30px 0;color:var(--gray);font-size:.9rem;border-top:1px solid var
       <div class="facts"><span>4,9 ★ y 121 reseñas en Google</span><span>Cra. 69 #63A-78</span><span>Citas por WhatsApp</span></div>
     </div>
 
-    <aside class="receipt" aria-labelledby="precios-t">
+    <div class="printer" data-reveal><div class="slot" aria-hidden="true"></div><div class="paper"><aside class="receipt" aria-labelledby="precios-t">
       <h2 id="precios-t">Lista de precios</h2>
       <p class="sub">Precios de ejemplo: aquí van los suyos</p>
       <ul class="prices">
@@ -146,8 +222,10 @@ footer{padding:30px 0;color:var(--gray);font-size:.9rem;border-top:1px solid var
         <li><span>Ortodoncia, cuota inicial</span><i></i><span>$900.000</span></li>
       </ul>
       <p class="note">El valor final se confirma en la valoración según su caso. Aceptamos pagos por cuotas en ortodoncia.</p>
-    </aside>
+    </aside></div></div>
   </div>
+</div>
+
 </div>
 
 <section class="voices" aria-label="Reseña en Google"><div class="wrap"><figure><blockquote>“Me realicé un diseño con el Dr. Santiago, muy profesional en el trabajo.”</blockquote><figcaption>Reseña de un cliente en Google · 4,9 ★ promedio con 121 reseñas</figcaption></figure></div></section>
@@ -223,6 +301,8 @@ footer{padding:30px 0;color:var(--gray);font-size:.9rem;border-top:1px solid var
   </div>
 </section>
 
+<section class="folio-next" aria-labelledby="next-t"><div class="wrap next-in"><div><span class="folio-mark">Folio<i>.</i></span><h2 id="next-t">¿Le gustaría que esta fuera la página de El Bosque?</h2><p>Desde $690.000, pago único. El alojamiento va incluido, sin mensualidades.</p><a class="next-cta" href="https://wa.me/573001317394?text=Hola%2C%20vi%20la%20propuesta%20de%20p%C3%A1gina%20web%20para%20El%20Bosque%20y%20me%20interesa." target="_blank" rel="noopener">Escribir a Folio por WhatsApp</a><a class="next-link" href="https://estudiofolio.github.io">Conocer a Folio</a></div><ol class="next-steps"><li><b>Nos escribe por WhatsApp</b><span>Nos cuenta qué le gustó y qué cambiaría.</span></li><li><b>Nos envía sus datos</b><span>Fotos, servicios, precios y horario. Los textos los escribimos nosotros.</span></li><li><b>En 5 días hábiles queda en línea</b><span>Con su WhatsApp, su mapa y su perfil de Google al día.</span></li></ol></div></section>
+
 <footer><div class="wrap">El Bosque · Propuesta de diseño preparada por Folio Estudio Digital</div></footer>
 
 <script>
@@ -237,6 +317,42 @@ document.getElementById("form").addEventListener("submit", e => {
   p.hidden = false;
   p.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" });
 });
+</script>
+<script>
+(function(){
+  var intro = document.getElementById("intro"), key = "folio-intro-el-bosque-4fcd";
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function go(){
+    document.body.classList.add("go");
+    var items = document.querySelectorAll("[data-reveal]");
+    if (!("IntersectionObserver" in window)) { items.forEach(function(el){ el.classList.add("on"); }); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add("on"); io.unobserve(en.target); } });
+    }, {threshold: 0.45});
+    items.forEach(function(el){ io.observe(el); });
+  }
+  var seen = false;
+  try { seen = sessionStorage.getItem(key) === "1"; } catch (err) {}
+  if (!intro || seen) { if (intro) intro.remove(); go(); return; }
+  document.body.classList.add("lock");
+  var btn = intro.querySelector(".intro-go"), closed = false;
+  function after(){ intro.classList.add("b"); setTimeout(function(){ btn.focus({preventScroll: true}); }, reduce ? 0 : 700); }
+  if (reduce) after();
+  else { setTimeout(function(){ intro.classList.add("in"); }, 60); setTimeout(after, 1800); }
+  function close(){
+    if (closed) return; closed = true;
+    intro.classList.add("b", "out");
+    try { sessionStorage.setItem(key, "1"); } catch (err) {}
+    document.body.classList.remove("lock");
+    setTimeout(function(){
+      intro.remove(); go();
+      var h = document.querySelector("h1");
+      if (h) { h.setAttribute("tabindex", "-1"); h.focus({preventScroll: true}); }
+    }, reduce ? 0 : 650);
+  }
+  intro.addEventListener("click", close);
+  document.addEventListener("keydown", function(ev){ if (ev.key === "Escape" && !closed) close(); });
+})();
 </script>
 </body>
 </html>
