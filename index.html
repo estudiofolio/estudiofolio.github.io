@@ -31,15 +31,19 @@ try {
 </script>
 <style>
 :root{
-  --ink:#0E1A3A;      /* Bogotá de noche */
-  --ink-2:#1A2A55;
-  --beam:#FFC83D;     /* la luz del faro */
-  --amber:#E39A00;
-  --paper:#F5F6F1;
-  --moss:#2F6B4F;
-  --slate:#5B6478;
-  --line:#D8DBD2;
+  /* Brand palette: see marca.html. Two colors and one light. */
+  --ink:#0E1A3A;      /* Noche */
+  --deep:#070D22;     /* Noche profunda */
+  --ink-2:#1A2A55;    /* Noche clara */
+  --beam:#FFC83D;     /* Luz: only where we want people to look or act */
+  --amber:#E39A00;    /* Ámbar: the light on Papel, graphics only */
+  --bronze:#946000;   /* Bronce: the light as text on Papel */
+  --paper:#F6F3EC;    /* Papel, warm */
+  --mist:#AEB6CC;     /* Bruma */
+  --slate:#5B6478;    /* Pizarra */
+  --line:#DEDAD0;
   --white:#FFFFFF;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .13 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --serif:"Fraunces",Georgia,serif;
   --mono:ui-monospace,"SFMono-Regular","Cascadia Mono","Consolas","Menlo",monospace;
   --d:0s;             /* extra delay while the intro plays */
@@ -62,7 +66,7 @@ p{max-width:62ch}
 .lede{font-size:1.2rem;line-height:1.55}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .label{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);display:flex;gap:8px;align-items:center;margin-bottom:18px}
-.label b{color:var(--amber);font-weight:700}
+.label b{color:var(--bronze);font-weight:700}
 .dark .label{color:#AEB6CC}
 .dark .label b{color:var(--beam)}
 .shead{display:flex;justify-content:space-between;align-items:end;gap:24px 56px;flex-wrap:wrap;margin-bottom:48px}
@@ -122,7 +126,7 @@ p{max-width:62ch}
 @media (max-width:520px){.brand span{display:none}.brand{padding:10px 16px}.navpill a.wa span{display:none}}
 
 /* ===== Night: hero lit by the logo's own lamp ===== */
-.night{background:radial-gradient(120% 80% at 8% 0%,#1B2D66 0%,var(--ink) 58%);color:var(--paper);position:relative;overflow:hidden;padding-top:92px}
+.night{background:var(--grain),radial-gradient(120% 80% at 8% 0%,#1B2D66 0%,var(--ink) 58%);color:var(--paper);position:relative;overflow:hidden;padding-top:92px}
 .beam{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .6s ease;clip-path:polygon(0 0,0 0,0 0)}
 .beam.core{background:radial-gradient(circle 1700px at var(--lx,0) var(--ly,0),rgba(255,200,61,.44),rgba(255,200,61,.24) 30%,rgba(255,200,61,.09) 65%,rgba(255,200,61,0) 100%)}
 .beam.halo{background:radial-gradient(circle 1700px at var(--lx,0) var(--ly,0),rgba(255,200,61,.16),rgba(255,200,61,.06) 50%,rgba(255,200,61,0) 100%)}
@@ -190,7 +194,10 @@ p{max-width:62ch}
 @media (max-width:960px){.notif{right:-6px;top:auto;bottom:74px;width:248px}.cursor.samuel{left:6px}}
 
 /* Ticker band */
-.ticker-wrap{overflow:hidden;margin-top:-42px;padding:18px 0;position:relative;z-index:3}
+.ticker-zone{position:relative;z-index:3;margin-top:-42px;scroll-margin-top:320px}
+.ticker-wrap{overflow:hidden;padding:18px 0}
+.seal{position:absolute;right:max(20px,calc((100vw - 1200px) / 2 + 28px));top:-58px;width:clamp(96px,10vw,136px);height:auto;transform:rotate(-8deg);filter:drop-shadow(0 16px 26px rgba(7,13,34,.45))}
+@media (max-width:960px){.seal{top:-70px}}
 .ticker{background:var(--beam);color:var(--ink);transform:rotate(-1.6deg);margin:0 -20px;border-block:2px solid var(--ink)}
 .track{display:flex;width:max-content;animation:tick 42s linear infinite}
 .track span{font-weight:800;font-stretch:125%;font-size:clamp(1.05rem,2.1vw,1.5rem);padding:14px 0;white-space:nowrap;text-transform:uppercase}
@@ -300,7 +307,7 @@ section{padding:110px 0}
 @keyframes pop{from{opacity:.25;transform:translateY(3px)}to{opacity:1;transform:none}}
 
 /* ===== 02 Craft: from a Google listing to a page that sells, one decision at a time ===== */
-.craft{background:var(--ink);color:var(--paper);padding:110px 0 0;position:relative}
+.craft{background:var(--grain),var(--ink);color:var(--paper);padding:110px 0 0;position:relative}
 .craft .shead p.side{color:#C9CEDD}
 .craft-sticky{padding:20px 0 110px}
 .js .craft-track{height:460vh}
@@ -335,7 +342,7 @@ section{padding:110px 0}
 .mk-list li b{color:#0F4C5C}
 .mk-addr{font-size:.78rem;color:#5f6368;padding:0 22px 18px}
 .mk-noweb{position:absolute;right:16px;top:58px;font-size:.7rem;color:#8A8F98;border:1px dashed #C9CDD3;border-radius:999px;padding:3px 9px;transition:opacity .4s}
-.mk-live{position:absolute;right:14px;top:56px;background:var(--moss);color:#fff;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:999px;transform:scale(0);transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.mk-live{position:absolute;right:14px;top:56px;background:var(--ink);color:var(--beam);font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:999px;transform:scale(0);transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
 .mk-sweep{position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 30%,rgba(255,200,61,.35) 50%,transparent 70%);transform:translateX(-110%)}
 .mock.s1 .mk-kick{max-height:20px;opacity:1;margin-bottom:6px}
 .mock.s1 .mk-name{font-family:var(--serif);font-weight:600;font-size:2.3rem;letter-spacing:-.02em}
@@ -355,7 +362,7 @@ section{padding:110px 0}
 .insp-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
 .insp-top .label{margin:0}
 .state{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.1);color:#D9DDEA;transition:background-color .3s,color .3s}
-.state.done{background:var(--moss);color:#fff}
+.state.done{background:var(--beam);color:var(--ink)}
 .decisions{list-style:none;display:grid;gap:6px}
 .decisions li{padding:12px 14px;border-radius:14px;border:1px solid transparent;transition:background-color .3s,border-color .3s,opacity .3s;opacity:.45;position:relative;padding-left:44px}
 .decisions li::before{content:attr(data-i);position:absolute;left:12px;top:12px;width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);font-family:var(--mono);font-size:.7rem;display:grid;place-items:center}
@@ -363,7 +370,7 @@ section{padding:110px 0}
 .decisions li span{font-family:var(--mono);font-size:.72rem;color:var(--beam)}
 .decisions li p{font-size:.9rem;color:#C9CEDD;max-height:0;overflow:hidden;transition:max-height .4s,margin .4s}
 .decisions li.done{opacity:.8}
-.decisions li.done::before{content:"✓";background:var(--moss);border-color:var(--moss);color:#fff}
+.decisions li.done::before{content:"✓";background:none;border-color:var(--beam);color:var(--beam)}
 .decisions li.now{opacity:1;background:rgba(255,200,61,.08);border-color:rgba(255,200,61,.35)}
 .decisions li.now::before{background:var(--beam);border-color:var(--beam);color:var(--ink)}
 .decisions li.now p{max-height:80px;margin-top:4px}
@@ -388,10 +395,11 @@ html:not(.js) .scroll-hint{display:none}
 /* ===== 03 Services: big rows ===== */
 .rows{list-style:none;border-top:2px solid var(--ink)}
 .rows a{display:grid;grid-template-columns:70px 1fr 1.25fr 44px;gap:24px;align-items:center;padding:30px 16px;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color .35s ease,color .35s ease,padding .35s ease}
-.rows .n{font-family:var(--mono);font-size:.85rem;color:var(--amber)}
+.rows .n{font-family:var(--mono);font-size:.85rem;color:var(--bronze)}
+.rows a:hover .n{color:var(--beam)}
 .rows h3{font-size:clamp(1.5rem,2.8vw,2.3rem);font-stretch:125%;font-weight:800}
 .rows p{color:var(--slate);font-size:1rem}
-.rows small{display:block;margin-top:6px;font-family:var(--mono);font-size:.74rem;color:var(--moss);text-transform:uppercase;letter-spacing:.04em}
+.rows small{display:block;margin-top:6px;font-family:var(--mono);font-size:.74rem;color:var(--bronze);text-transform:uppercase;letter-spacing:.04em}
 .rows .go{width:44px;height:44px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;transition:transform .35s ease,background-color .35s,color .35s}
 .rows .go svg{width:18px;height:18px}
 .rows a:hover{background:var(--ink);color:var(--paper);padding-left:28px}
@@ -439,11 +447,11 @@ html:not(.js) .scroll-hint{display:none}
 .amount small{display:block;font-size:.85rem;font-weight:500;font-stretch:100%;color:var(--slate);margin-top:6px}
 .plan.main .amount small{color:#C9CEDD}
 .amount s{font-weight:500}
-.when{display:inline-block;align-self:flex-start;font-family:var(--mono);font-size:.74rem;text-transform:uppercase;font-weight:700;margin-top:12px;padding:5px 10px;border-radius:999px;background:rgba(47,107,79,.12);color:var(--moss)}
+.when{display:inline-block;align-self:flex-start;font-family:var(--mono);font-size:.74rem;text-transform:uppercase;font-weight:700;margin-top:12px;padding:5px 10px;border-radius:999px;background:rgba(14,26,58,.07);color:var(--ink)}
 .plan.main .when{background:rgba(255,200,61,.16);color:var(--beam)}
 .plan ul{list-style:none;display:grid;gap:8px;margin:22px 0 26px;flex:1;align-content:start}
 .plan ul li{padding-left:24px;position:relative;font-size:.98rem}
-.plan ul li::before{content:"";position:absolute;left:2px;top:.6em;width:10px;height:6px;border-left:2.5px solid var(--moss);border-bottom:2.5px solid var(--moss);transform:rotate(-45deg)}
+.plan ul li::before{content:"";position:absolute;left:2px;top:.6em;width:10px;height:6px;border-left:2.5px solid var(--amber);border-bottom:2.5px solid var(--amber);transform:rotate(-45deg)}
 .plan.main ul li::before{border-color:var(--beam)}
 .plan .btn{width:100%}
 .plan:not(.main) .btn{border-color:var(--ink)}
@@ -477,7 +485,7 @@ html:not(.js) .scroll-hint{display:none}
 .me p{color:#C9CEDD;margin:4px auto 0;font-size:.95rem}
 .me .btn{margin-top:22px}
 .hello{font-family:var(--serif);font-weight:600;font-size:clamp(2.4rem,4.8vw,3.6rem);line-height:1.02;letter-spacing:-.015em;font-stretch:100%}
-.hello em{font-style:italic;color:var(--amber)}
+.hello em{font-style:italic;color:var(--bronze)}
 .about-text p.big{font-size:1.35rem;line-height:1.4;font-weight:600;margin-top:22px;max-width:38ch;color:var(--ink)}
 .about-text p{margin-top:16px;color:var(--slate)}
 .pledges{list-style:none;margin-top:26px;display:grid;gap:12px}
@@ -505,7 +513,7 @@ html:not(.js) .scroll-hint{display:none}
 .faq a{text-decoration-color:var(--beam);text-decoration-thickness:2px;text-underline-offset:3px}
 
 /* ===== Final call ===== */
-.final{background:radial-gradient(100% 120% at 90% 100%,#1B2D66,var(--ink) 60%);color:var(--paper);padding:90px 0 100px;overflow:hidden}
+.final{background:var(--grain),radial-gradient(100% 120% at 90% 100%,#1B2D66,var(--ink) 60%);color:var(--paper);padding:90px 0 100px;overflow:hidden}
 .big-marquee .track{animation-duration:30s}
 .big-marquee span{font-size:clamp(3.4rem,11vw,9.5rem);font-weight:800;font-stretch:125%;line-height:1;padding:0;color:transparent;-webkit-text-stroke:2px rgba(245,246,241,.85);text-transform:none;letter-spacing:-.02em}
 .big-marquee i{color:var(--beam);-webkit-text-stroke:0;font-size:.6em;vertical-align:middle;margin:0 .35em}
@@ -514,10 +522,10 @@ html:not(.js) .scroll-hint{display:none}
 .final .lede b{color:#fff}
 .final-cta{display:grid;gap:14px;justify-items:start}
 .btn-xl{font-size:1.25rem;padding:1em 1.6em}
-.final .small{font-size:.92rem;color:#AEB5C9}
+.final .small{font-size:.92rem;color:var(--mist)}
 .final a.mail{color:var(--beam);font-weight:650}
 @media (max-width:960px){.final-grid{grid-template-columns:1fr;gap:28px}}
-.site-foot{background:#08112A;color:#AEB5C9;font-size:.92rem;padding:44px 0 0;overflow:hidden}
+.site-foot{background:var(--grain),var(--deep);color:var(--mist);font-size:.92rem;padding:44px 0 0;overflow:hidden}
 .foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px}
 .foot-top nav{display:flex;flex-wrap:wrap;gap:8px 24px;font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
 .site-foot a{text-decoration:none}
@@ -529,7 +537,7 @@ html:not(.js) .scroll-hint{display:none}
 <body>
 
 <div class="loader" aria-hidden="true">
-  <svg viewBox="0 -12 236 118"><defs><linearGradient id="lg2" x1="0" x2="1"><stop offset="0" stop-color="#FFC83D" stop-opacity=".5"/><stop offset="1" stop-color="#FFC83D" stop-opacity="0"/></linearGradient><clipPath id="lc2"><polygon points="64,5 236,-18 236,138 64,19"/></clipPath><filter id="lf2" x="-2" y="-2" width="5" height="5"><feGaussianBlur stdDeviation="5"/></filter></defs><polygon class="ld-beam" points="64,5 236,-18 236,138 64,19" fill="url(#lg2)"/><g fill="none" stroke="#F5F6F1" stroke-width="16"><path d="M24 100V34A22 22 0 0 1 46 12"/><path d="M9 51H45" stroke-width="14"/><circle cx="84" cy="72" r="20"/><path d="M104 44V100"/><path d="M130 100V44"/><path d="M130 72A22 22 0 0 1 152 50H157"/><circle cx="190" cy="72" r="20"/></g><g class="ld-lit" fill="none" stroke="#FFC83D" stroke-width="16" clip-path="url(#lc2)"><circle cx="84" cy="72" r="20"/><path d="M104 44V100"/><path d="M130 100V44"/><path d="M130 72A22 22 0 0 1 152 50H157"/><circle cx="190" cy="72" r="20"/></g><circle class="ld-glow" cx="60" cy="12" r="12" fill="#FFC83D" filter="url(#lf2)" opacity=".9"/><circle class="ld-lamp" cx="60" cy="12" r="11" fill="#FFC83D"/></svg>
+  <svg viewBox="0 -12 236 118"><defs><linearGradient id="lg2" x1="0" x2="1"><stop offset="0" stop-color="#FFC83D" stop-opacity=".5"/><stop offset="1" stop-color="#FFC83D" stop-opacity="0"/></linearGradient><clipPath id="lc2"><polygon points="64,5 236,-18 236,138 64,19"/></clipPath><filter id="lf2" x="-2" y="-2" width="5" height="5"><feGaussianBlur stdDeviation="5"/></filter></defs><polygon class="ld-beam" points="64,5 236,-18 236,138 64,19" fill="url(#lg2)"/><g fill="none" stroke="#F6F3EC" stroke-width="16"><path d="M24 100V34A22 22 0 0 1 46 12"/><path d="M9 51H45" stroke-width="14"/><circle cx="84" cy="72" r="20"/><path d="M104 44V100"/><path d="M130 100V44"/><path d="M130 72A22 22 0 0 1 152 50H157"/><circle cx="190" cy="72" r="20"/></g><g class="ld-lit" fill="none" stroke="#FFC83D" stroke-width="16" clip-path="url(#lc2)"><circle cx="84" cy="72" r="20"/><path d="M104 44V100"/><path d="M130 100V44"/><path d="M130 72A22 22 0 0 1 152 50H157"/><circle cx="190" cy="72" r="20"/></g><circle class="ld-glow" cx="60" cy="12" r="12" fill="#FFC83D" filter="url(#lf2)" opacity=".9"/><circle class="ld-lamp" cx="60" cy="12" r="11" fill="#FFC83D"/></svg>
   <span class="msg">Encendiendo el faro…</span><span class="count" id="count">000</span>
 </div>
 <script>
@@ -542,7 +550,7 @@ if (document.documentElement.classList.contains("intro")) {
 <header class="bar" id="bar">
   <div class="wrap">
     <a class="brand pill" href="#inicio" aria-label="Faro Estudio Digital, inicio">
-      <svg viewBox="0 -12 236 118" class="logo" aria-hidden="true"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#FFC83D" stop-opacity=".5"/><stop offset="1" stop-color="#FFC83D" stop-opacity="0"/></linearGradient><clipPath id="lc"><polygon points="64,5 236,-18 236,138 64,19"/></clipPath><filter id="lf" x="-2" y="-2" width="5" height="5"><feGaussianBlur stdDeviation="5"/></filter></defs><polygon points="64,5 236,-18 236,138 64,19" fill="url(#lg)"/><g fill="none" stroke="#F5F6F1" stroke-width="16"><path d="M24 100V34A22 22 0 0 1 46 12"/><path d="M9 51H45" stroke-width="14"/><circle cx="84" cy="72" r="20"/><path d="M104 44V100"/><path d="M130 100V44"/><path d="M130 72A22 22 0 0 1 152 50H157"/><circle cx="190" cy="72" r="20"/></g><g fill="none" stroke="#FFC83D" stroke-width="16" clip-path="url(#lc)"><circle cx="84" cy="72" r="20"/><path d="M104 44V100"/><path d="M130 100V44"/><path d="M130 72A22 22 0 0 1 152 50H157"/><circle cx="190" cy="72" r="20"/></g><circle cx="60" cy="12" r="12" fill="#FFC83D" filter="url(#lf)" opacity=".9"/><circle id="lamp" cx="60" cy="12" r="11" fill="#FFC83D"/></svg>
+      <svg viewBox="0 -12 236 118" class="logo" aria-hidden="true"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#FFC83D" stop-opacity=".5"/><stop offset="1" stop-color="#FFC83D" stop-opacity="0"/></linearGradient><clipPath id="lc"><polygon points="64,5 236,-18 236,138 64,19"/></clipPath><filter id="lf" x="-2" y="-2" width="5" height="5"><feGaussianBlur stdDeviation="5"/></filter></defs><polygon points="64,5 236,-18 236,138 64,19" fill="url(#lg)"/><g fill="none" stroke="#F6F3EC" stroke-width="16"><path d="M24 100V34A22 22 0 0 1 46 12"/><path d="M9 51H45" stroke-width="14"/><circle cx="84" cy="72" r="20"/><path d="M104 44V100"/><path d="M130 100V44"/><path d="M130 72A22 22 0 0 1 152 50H157"/><circle cx="190" cy="72" r="20"/></g><g fill="none" stroke="#FFC83D" stroke-width="16" clip-path="url(#lc)"><circle cx="84" cy="72" r="20"/><path d="M104 44V100"/><path d="M130 100V44"/><path d="M130 72A22 22 0 0 1 152 50H157"/><circle cx="190" cy="72" r="20"/></g><circle cx="60" cy="12" r="12" fill="#FFC83D" filter="url(#lf)" opacity=".9"/><circle id="lamp" cx="60" cy="12" r="11" fill="#FFC83D"/></svg>
       <span>Estudio<br>digital</span>
     </a>
     <nav class="navpill pill" aria-label="Principal">
@@ -607,11 +615,14 @@ if (document.documentElement.classList.contains("intro")) {
   </div>
 </div>
 
-<div class="ticker-wrap" aria-hidden="true">
-  <div class="ticker"><div class="track">
-    <span>Páginas web<i>✦</i>Perfil de Google Maps<i>✦</i>Citas por WhatsApp<i>✦</i>Menú del día<i>✦</i>Automatizaciones<i>✦</i>Hecho en Colombia<i>✦</i></span>
-    <span>Páginas web<i>✦</i>Perfil de Google Maps<i>✦</i>Citas por WhatsApp<i>✦</i>Menú del día<i>✦</i>Automatizaciones<i>✦</i>Hecho en Colombia<i>✦</i></span>
-  </div></div>
+<div class="ticker-zone" id="cinta">
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker"><div class="track">
+      <span>Páginas web<i>✦</i>Perfil de Google Maps<i>✦</i>Citas por WhatsApp<i>✦</i>Menú del día<i>✦</i>Automatizaciones<i>✦</i>Hecho en Colombia<i>✦</i></span>
+      <span>Páginas web<i>✦</i>Perfil de Google Maps<i>✦</i>Citas por WhatsApp<i>✦</i>Menú del día<i>✦</i>Automatizaciones<i>✦</i>Hecho en Colombia<i>✦</i></span>
+    </div></div>
+  </div>
+  <img class="seal" src="img/faro-sello.svg" width="200" height="200" alt="" loading="lazy">
 </div>
 
 <main>
@@ -915,6 +926,7 @@ if (document.documentElement.classList.contains("intro")) {
         <a href="#ejemplos">Ejemplos</a>
         <a href="#precios">Precios</a>
         <a href="#preguntas">Preguntas</a>
+        <a href="marca.html">Marca</a>
         <a href="privacidad.html">Privacidad</a>
       </nav>
     </div>
