@@ -1262,6 +1262,7 @@ document.addEventListener("folio:negocio", e => {
   if ("IntersectionObserver" in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; visible ? start() : stop(); }).observe(document.getElementById("inicio"));
   document.addEventListener("visibilitychange", () => { document.hidden ? stop() : start(); });
   show(ORDER[0], false);  /* the first word is there from the start; later ones rise in */
+  window.addEventListener("load", () => imgs.forEach(im => { im.loading = "eager"; }));  /* the other photos are ready before their turn */
   start();
 })();
 
