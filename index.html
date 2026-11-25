@@ -592,6 +592,12 @@ html:not(.js) .beats{gap:80px}
 .pledges{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
 .pledges span{border:1.5px solid rgba(255,255,255,.3);border-radius:999px;padding:.55em 1.1em;font-weight:650;font-size:.95rem}
 @media (max-width:960px){.letter-grid{grid-template-columns:1fr;gap:56px}}
+.portrait{position:relative;float:right;width:min(42%,250px);margin:6px 0 24px 30px;background:#fff;padding:10px 10px 40px;transform:rotate(2.5deg);box-shadow:0 30px 50px -26px #000}
+.portrait[hidden]{display:none}
+.portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;display:block}
+.portrait figcaption{position:absolute;left:12px;right:12px;bottom:9px;font-family:"Caveat","Segoe Print",cursive;font-size:1.3rem;line-height:1;color:#3A332B}
+.portrait .tape{top:-13px;left:50%;margin-left:-50px;width:100px;transform:rotate(-4deg)}
+@media (max-width:560px){.portrait{float:none;width:72%;margin:0 0 30px 4px;transform:rotate(-1.5deg)}}
 
 /* ===== Folio 8: FAQ ===== */
 .faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
@@ -822,8 +828,8 @@ html:not(.js) .beats{gap:80px}
     <span class="fno">Folio 4</span>
     <div class="wrap">
       <div class="book-head">
-        <h2>Hojee <em>los ejemplos</em>.</h2>
-        <p>Tres negocios inventados, tres páginas de verdad. Pase la hoja, y ábralas en su celular: funcionan.</p>
+        <h2>Nuestro trabajo, <em>página por página</em>.</h2>
+        <p>Tres páginas de muestra para negocios ficticios, construidas con el mismo cuidado que la de un cliente. Pase las páginas o ábralas en su celular.</p>
       </div>
       <div class="book" id="book">
         <div class="spread" data-i="0">
@@ -839,14 +845,14 @@ html:not(.js) .beats{gap:80px}
           <div class="pg r"><span class="kind">Veterinaria, Suba</span><h3>Cerro Verde</h3><p>El botón rojo de urgencias va arriba de todo, para leer con nervios y una sola mano. Abajo, el carné de vacunas para perro o gato.</p><div class="row"><a class="btn ink small" href="demos/veterinaria/index.html">Abrir la página</a><div class="tiny"><div><img src="img/demo-veterinaria.webp" width="585" height="6364" alt="" loading="lazy"></div></div></div><span class="pno">6</span></div>
         </div>
         <div class="spread cta" data-i="3" hidden>
-          <div class="pg l"><p class="big">Y la próxima hoja, <em>la suya</em>.</p><span class="pno">7</span></div>
-          <div class="pg r"><p>Escriba el nombre de su negocio y vea un boceto en diez segundos. La de verdad se la mostramos gratis, antes de cobrarle un peso.</p><div class="row"><a class="btn ink" href="#pruebe" data-focus-maker>Probar con mi negocio</a></div><span class="pno">8</span></div>
+          <div class="pg l"><p class="big">La siguiente puede ser <em>la de su negocio</em>.</p><span class="pno">7</span></div>
+          <div class="pg r"><p>Escriba el nombre de su negocio y vea un boceto en segundos. Su página de prueba la preparamos sin costo y sin compromiso: usted decide después.</p><div class="row"><a class="btn ink" href="#pruebe" data-focus-maker>Ver un boceto de mi negocio</a></div><span class="pno">8</span></div>
         </div>
       </div>
       <div class="book-nav">
-        <button type="button" id="bprev" aria-label="Hoja anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" id="bprev" aria-label="Página anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
         <span id="bpos">1 de 4</span>
-        <button type="button" id="bnext" aria-label="Hoja siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button type="button" id="bnext" aria-label="Página siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
     </div>
   </section>
@@ -947,6 +953,8 @@ html:not(.js) .beats{gap:80px}
     <span class="fno">Folio 7</span>
     <div class="wrap letter-grid">
       <div class="letter-body">
+        <!-- Portrait: drop img/samuel.webp (4:5) and remove "hidden" -->
+        <figure class="portrait" hidden><span class="tape"></span><img src="img/samuel.webp" width="800" height="1000" alt="Samuel, fundador de Folio Estudio Digital" loading="lazy"><figcaption>Samuel, fundador</figcaption></figure>
         <h2>Hola, soy <em>Samuel</em>.</h2>
         <p class="big">Folio es mi estudio, y existe por una razón: hay negocios muy buenos que la gente no encuentra en internet.</p>
         <p>Lo vi buscando veterinarias y consultorios en Bogotá: lugares con 4,9 estrellas y más de cien reseñas en Google, pero sin una página donde ver sus servicios o pedir una cita. Eso tiene arreglo, y no tiene por qué costar una fortuna.</p>
