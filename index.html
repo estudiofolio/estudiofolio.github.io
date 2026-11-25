@@ -107,7 +107,8 @@ p{max-width:62ch}
 .mast .logo{width:118px;height:auto;overflow:visible}
 .mast-tag{font-size:.92rem;line-height:1.3;color:var(--slate);max-width:22ch}
 .mast-nav{display:flex;gap:6px;margin-left:auto}
-.mast-nav a{text-decoration:none;font-weight:650;padding:.55em .9em;border-radius:999px}
+.mast-nav a{text-decoration:none;font-weight:650;padding:.55em .9em;border-radius:999px;white-space:nowrap}
+@media (max-width:1180px){.mast-tag{display:none}}
 .mast-nav a:hover{background:rgba(var(--ink-rgb),.07)}
 .mast .menu-btn{display:none;margin-left:auto;border:2px solid var(--ink)}
 @media (max-width:1000px){.mast-nav,.mast .btn{display:none}.mast .menu-btn{display:block}}
@@ -578,7 +579,66 @@ html:not(.js) .beats{gap:80px}
 .launch{margin-top:36px;color:var(--slate);max-width:80ch}
 @media (max-width:960px){.plans,.extras{grid-template-columns:1fr}}
 
-/* ===== Folio 7: Samuel ===== */
+/* ===== Folio 7: how it works ===== */
+.how-head{display:flex;justify-content:space-between;align-items:end;gap:24px 60px;flex-wrap:wrap}
+.how-head h2{max-width:11ch}
+.how-head p{color:var(--slate);max-width:40ch;font-size:1.08rem}
+.how-head .btn{margin-top:18px}
+.how-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;margin-top:64px;align-items:start}
+/* The receipt */
+.rc-wrap{transform:rotate(-1.4deg);filter:drop-shadow(0 22px 22px rgba(0,0,0,.22)) drop-shadow(0 2px 2px rgba(0,0,0,.12))}
+.receipt{position:relative;background:var(--sheet);font-family:var(--mono);font-size:.95rem;line-height:1.45;padding:30px 28px 46px;
+  -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%}
+.rc-top{text-align:center;padding-bottom:16px;border-bottom:2px dashed var(--ink)}
+.rc-top .logo{width:84px;margin:0 auto 8px}
+.rc-top h3{font-family:var(--mono);font-size:1rem;letter-spacing:.08em;text-transform:uppercase}
+.rc-top p{margin:4px auto 0;font-size:.82rem;color:var(--slate)}
+.rc-block{padding:16px 0 14px;border-bottom:1px dashed #BDB2A1}
+.rc-when{font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze)}
+.rc-row{display:flex;align-items:baseline;gap:8px;margin-top:6px;max-width:none}
+.rc-row i{flex:1;border-bottom:2px dotted #A99E8D;transform:translateY(-4px);min-width:16px}
+.rc-row b{white-space:nowrap}
+.rc-note{margin-top:8px;font-size:.84rem;color:#4A4239;max-width:none}
+.rc-block.yr .rc-row{position:relative;z-index:0}
+.rc-block.yr .rc-row::before{content:"";position:absolute;z-index:-1;left:-8px;right:-8px;top:.15em;bottom:-.05em;background:rgba(var(--beam-rgb),.32);border-radius:3px 9px 4px 10px;transform:rotate(-.6deg) skewX(-6deg)}
+.rc-block.yr .rc-when{color:var(--ink)}
+.rc-total{display:flex;justify-content:space-between;gap:10px;padding-top:16px;font-weight:700;font-size:1.02rem;max-width:none}
+.rc-total b{font-size:1.25rem}
+.rc-thanks{margin:18px auto 0;text-align:center;font-size:.82rem;color:var(--slate)}
+/* The checklist pad */
+.pad{position:relative;background:var(--sheet);border:1.5px solid var(--ink);border-radius:6px;padding:40px 34px 34px;box-shadow:10px 12px 0 -2px var(--ink);transform:rotate(.8deg)}
+.pad>.tape{top:-14px;left:50%;margin-left:-60px;transform:rotate(-2deg)}
+.pad h3{font-stretch:125%;font-weight:800;font-size:1.6rem;letter-spacing:-.02em;line-height:1.05}
+.pad-sub{margin-top:8px;color:var(--slate)}
+.todo{list-style:none;margin-top:18px}
+.todo>li{border-top:1px solid var(--line);padding:14px 0}
+.todo label{display:grid;grid-template-columns:34px 1fr;gap:12px;cursor:pointer;align-items:start}
+.todo input{position:absolute;opacity:0;width:1px;height:1px}
+.todo .bx{width:26px;height:26px;border:2px solid var(--ink);border-radius:5px 7px 4px 6px;background:#fff;margin-top:1px;position:relative;transition:transform .2s var(--ease)}
+.todo .bx svg{position:absolute;left:-3px;top:-9px;width:36px;height:34px;overflow:visible;fill:none;stroke:var(--beam);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;transition:stroke-dashoffset .35s var(--ease)}
+.todo input:checked+.bx svg{stroke-dashoffset:0}
+.todo input:checked~.tx b{text-decoration:line-through;text-decoration-color:var(--beam);text-decoration-thickness:3px}
+.todo input:focus-visible+.bx{outline:3px solid var(--beam);outline-offset:3px}
+.todo label:hover .bx{transform:rotate(-4deg) scale(1.06)}
+.todo .tx b{display:block;font-weight:750;font-size:1.08rem;line-height:1.3}
+.todo .tx span{display:block;color:#3A332B;margin-top:3px;font-size:.98rem}
+.todo details{margin:10px 0 0 46px}
+.todo summary{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:750;font-size:.95rem;list-style:none;text-decoration:underline;text-decoration-color:var(--beam);text-decoration-thickness:2px;text-underline-offset:4px}
+.todo summary::-webkit-details-marker{display:none}
+.todo summary::after{content:"+";font-size:1.2rem;line-height:1;text-decoration:none}
+.todo details[open] summary::after{content:"−"}
+.todo details ol{margin:12px 0 0 20px;display:grid;gap:6px;font-size:.96rem;color:#3A332B}
+.todo details p{margin-top:10px;font-size:.92rem;color:var(--bronze);font-weight:700}
+.todo .tx .only{display:inline-block;margin-bottom:4px;font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--paper);border-radius:9px;padding:.25em .7em;line-height:1.3}
+.pad .stamp2{display:block;width:230px;max-width:72%;margin:26px 4px 0 auto;color:#D2361A;transform:rotate(-6deg)}
+.how-own{margin-top:56px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px 26px;align-items:start;border-top:1.5px solid var(--ink);padding-top:28px;max-width:none}
+.how-own b{font-stretch:125%;font-weight:800;font-size:1.3rem;letter-spacing:-.02em;white-space:nowrap}
+.how-own span{color:#3A332B;max-width:70ch}
+@media (max-width:960px){.how-grid{grid-template-columns:1fr;gap:56px}.rc-wrap{max-width:460px;margin:0 auto;width:100%}}
+@media (max-width:560px){.receipt{padding:26px 18px 42px;font-size:.88rem}.rc-wrap{transform:rotate(-1deg)}.pad{padding:36px 20px 26px;box-shadow:6px 8px 0 -2px var(--ink);transform:none}.todo details{margin-left:0}.how-own{grid-template-columns:1fr}.how-own b{white-space:normal}}
+@media (prefers-reduced-motion:reduce){.todo .bx svg{transition:none}}
+
+/* ===== Folio 8: Samuel ===== */
 .letter-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:start}
 .letter h2{font-size:clamp(2.6rem,6vw,5.2rem)}
 .letter .big{font-size:clamp(1.3rem,2.1vw,1.6rem);line-height:1.35;margin-top:30px;font-weight:600}
@@ -602,7 +662,7 @@ html:not(.js) .beats{gap:80px}
 .portrait .tape{top:-13px;left:50%;margin-left:-50px;width:100px;transform:rotate(-4deg)}
 @media (max-width:560px){.portrait{float:none;width:72%;margin:0 0 30px 4px;transform:rotate(-1.5deg)}}
 
-/* ===== Folio 8: FAQ ===== */
+/* ===== Folio 9: FAQ ===== */
 .faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
 .faq-grid>div:first-child p{margin-top:18px;color:var(--slate)}
 .faq details{border-top:1.5px solid var(--ink)}
@@ -614,7 +674,7 @@ html:not(.js) .beats{gap:80px}
 .faq details p{padding:0 2px 22px;color:#3A332B}
 @media (max-width:960px){.faq-grid{grid-template-columns:1fr;gap:34px}}
 
-/* ===== Folio 9: contact ===== */
+/* ===== Folio 10: contact ===== */
 .contact h2{font-size:clamp(3rem,9vw,8.6rem);line-height:.88;letter-spacing:-.05em;max-width:11ch}
 .contact-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px 60px;align-items:end;margin-top:44px}
 .contact .lede{font-size:clamp(1.1rem,1.6vw,1.35rem);max-width:42ch;font-weight:500}
@@ -650,11 +710,18 @@ html:not(.js) .beats{gap:80px}
     <feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.6 1.55" result="m"/>
     <feComposite in="d" in2="m" operator="in"/>
   </filter>
+  <filter id="tinta2" x="-5%" y="-10%" width="110%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.3" numOctaves="2" seed="7" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="2" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency="2.2" numOctaves="1" seed="3" result="s"/>
+    <feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.75" result="m"/>
+    <feComposite in="d" in2="m" operator="in"/>
+  </filter>
 </svg>
 
 <div class="mini" id="mini" aria-hidden="true">
   <a class="brand" href="#inicio" tabindex="-1" aria-label="Folio, inicio"><svg viewBox="0 0 200 92" class="logo"><text x="2" y="76" font-size="100" font-family="Fraunces, Georgia, serif" font-weight="600" style="font-variation-settings:'opsz' 144" fill="#16130F" textLength="194" lengthAdjust="spacing">Folio<tspan fill="#FF4F1F">.</tspan></text></svg></a>
-  <span class="mini-f">Folio <b id="mf-n">1</b> de 9: <span id="mf-t">Portada</span></span>
+  <span class="mini-f">Folio <b id="mf-n">1</b> de 10: <span id="mf-t">Portada</span></span>
   <span class="sp"></span>
   <button class="menu-btn" type="button" data-index tabindex="-1">Índice</button>
   <a class="btn signal small" href="#pruebe" data-focus-maker tabindex="-1">Ver la mía gratis</a>
@@ -670,11 +737,11 @@ html:not(.js) .beats{gap:80px}
       <li><a href="#ejemplos"><span>4</span>Ejemplos</a></li>
       <li><a href="#casos"><span>5</span>Su caso</a></li>
       <li><a href="#precios"><span>6</span>Precios</a></li>
-      <li><a href="#nosotros"><span>7</span>Quién está detrás</a></li>
-      <li><a href="#preguntas"><span>8</span>Preguntas</a></li>
-      <li><a href="#contacto"><span>9</span>Contacto</a></li>
+      <li><a href="#como-funciona"><span>7</span>Cómo funciona</a></li>
+      <li><a href="#nosotros"><span>8</span>Quién está detrás</a></li>
+      <li><a href="#preguntas"><span>9</span>Preguntas</a></li>
+      <li><a href="#contacto"><span>10</span>Contacto</a></li>
     </ol>
-    <p style="margin-top:14px"><a href="como-funciona.html" style="font-weight:750">Cómo funciona: pagos, dominio y lo que necesitamos</a></p>
     <a class="btn signal" data-wa href="#contacto">Escribir por WhatsApp</a>
   </div>
 </div>
@@ -686,7 +753,7 @@ html:not(.js) .beats{gap:80px}
       <a class="brand" href="#inicio" aria-label="Folio Estudio Digital, inicio"><!--logo:header--><svg viewBox="0 0 200 92" xmlns="http://www.w3.org/2000/svg" class="logo" aria-hidden="true"><text x="2" y="76" font-size="100" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-weight="600" style="font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0" fill="#16130F" textLength="194" lengthAdjust="spacing">Folio<tspan id="lamp" fill="#FF4F1F">.</tspan></text></svg><!--/logo:header--></a>
       <p class="mast-tag">Estudio de páginas web para negocios de Colombia</p>
       <nav class="mast-nav" aria-label="Principal">
-        <a href="#ejemplos">Ejemplos</a><a href="#casos">Su caso</a><a href="#precios">Precios</a><a href="#preguntas">Preguntas</a>
+        <a href="#ejemplos">Ejemplos</a><a href="#casos">Su caso</a><a href="#precios">Precios</a><a href="#como-funciona">Cómo funciona</a><a href="#preguntas">Preguntas</a>
       </nav>
       <a class="btn ink small" data-wa href="#contacto">WhatsApp</a>
       <button class="menu-btn" type="button" data-index>Índice</button>
@@ -885,7 +952,7 @@ html:not(.js) .beats{gap:80px}
     <div class="wrap">
       <div class="prices-head">
         <h2>Lo que cuesta <em data-la2>su página</em>.</h2>
-        <p>La página se paga una sola vez, en dos partes: 50% para empezar y 50% cuando usted la aprueba. El alojamiento va incluido. <b>Lo único que se repite es el dominio, unos $40.000 cada año</b>: le avisamos un mes antes. <a class="guide-link" href="como-funciona.html">Vea cómo funciona, paso a paso</a></p>
+        <p>La página se paga una sola vez, en dos partes: 50% para empezar y 50% cuando usted la aprueba. El alojamiento va incluido. <b>Lo único que se repite es el dominio, unos $40.000 cada año</b>: le avisamos un mes antes. <a class="guide-link" href="#como-funciona">Vea cómo funciona, paso a paso</a></p>
       </div>
       <div class="plans">
         <article class="plan">
@@ -956,8 +1023,60 @@ html:not(.js) .beats{gap:80px}
   </section>
 
   <!-- Folio 7 -->
-  <section class="sheet dark sec letter" id="nosotros" data-title="Quién está detrás">
+  <section class="sheet sec how" id="como-funciona" data-title="Cómo funciona">
     <span class="fno">Folio 7</span>
+    <div class="wrap">
+      <div class="how-head">
+        <h2>Cómo funciona, <em>sin letra pequeña</em>.</h2>
+        <div>
+          <p>Antes de empezar, esto es lo que usted paga, cuándo lo paga y lo que necesitamos de usted. Si algo no queda claro, escríbanos y se lo explicamos.</p>
+          <a class="btn ink" href="guia-folio.pdf" download="Guia-Folio-como-funciona.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg>Descargar la guía en PDF</a>
+        </div>
+      </div>
+      <div class="how-grid">
+        <div class="rc-wrap"><article class="receipt" aria-labelledby="rc-t">
+          <div class="rc-top"><svg viewBox="0 0 200 92" class="logo" aria-hidden="true"><text x="2" y="76" font-size="100" font-family="Fraunces, Georgia, serif" font-weight="600" fill="#16130F" textLength="194" lengthAdjust="spacing">Folio<tspan fill="#FF4F1F">.</tspan></text></svg><h3 id="rc-t">Lo que paga, y cuándo</h3><p>Sin cobros escondidos</p></div>
+          <div class="rc-block"><p class="rc-when">Al empezar</p>
+            <p class="rc-row"><span>50% de su plan</span><i></i><b>una vez</b></p>
+            <p class="rc-row"><span>Dominio, primer año</span><i></i><b>≈ $40.000</b></p></div>
+          <div class="rc-block"><p class="rc-when">Al aprobar su página</p>
+            <p class="rc-row"><span>50% restante</span><i></i><b>una vez</b></p></div>
+          <div class="rc-block yr"><p class="rc-when">Cada año, después</p>
+            <p class="rc-row"><span>Renovación del dominio</span><i></i><b>≈ $40.000</b></p>
+            <p class="rc-note">Un mes antes le enviamos la cuenta de cobro y nosotros lo renovamos. Si no se renueva, la página deja de verse en esa dirección.</p></div>
+          <div class="rc-block"><p class="rc-when">Siempre</p>
+            <p class="rc-row"><span>Alojamiento</span><i></i><b>$0</b></p></div>
+          <div class="rc-block"><p class="rc-when">Solo si usted lo pide</p>
+            <p class="rc-row"><span>Siempre al Día</span><i></i><b>$90.000/mes</b></p>
+            <p class="rc-note">Incluye la renovación del dominio. Se cancela con un mensaje.</p>
+            <p class="rc-row"><span>Cambios sin plan</span><i></i><b>$60.000/hora</b></p></div>
+          <p class="rc-total"><span>Mensualidades obligatorias</span><b>$0</b></p>
+          <p class="rc-thanks">El precio de su plan está en la sección anterior. El dominio .com cuesta unos $40.000 al año; si está tomado, un .co, unos $100.000.</p>
+        </article></div>
+        <div class="pad">
+          <span class="tape"></span>
+          <h3>Lo que necesitamos de usted</h3>
+          <p class="pad-sub">Márquelo a medida que lo tenga. Todo se envía por WhatsApp.</p>
+          <ul class="todo">
+          <li><label><input type="checkbox"><span class="bx"><svg viewBox="0 0 36 34" aria-hidden="true"><path d="M5 19 L14 27 L32 5"/></svg></span><span class="tx"><b>El 50% inicial</b><span>Le enviamos la cuenta de cobro por WhatsApp. Paga por Bre-B (desde cualquier banco, Nequi o Daviplata) o por transferencia.</span></span></label></li>
+          <li><label><input type="checkbox"><span class="bx"><svg viewBox="0 0 36 34" aria-hidden="true"><path d="M5 19 L14 27 L32 5"/></svg></span><span class="tx"><b>El cuestionario de su negocio</b><span>Qué vende, horarios, dirección, servicios o productos con precios. Por escrito o en una llamada.</span></span></label></li>
+          <li><label><input type="checkbox"><span class="bx"><svg viewBox="0 0 36 34" aria-hidden="true"><path d="M5 19 L14 27 L32 5"/></svg></span><span class="tx"><b>Su logo y de 5 a 15 fotos</b><span>Del local, el equipo y lo que vende. Las del celular sirven si tienen buena luz. ¿No tiene logo? Lo resolvemos con el nombre de su negocio.</span></span></label></li>
+          <li><label><input type="checkbox"><span class="bx"><svg viewBox="0 0 36 34" aria-hidden="true"><path d="M5 19 L14 27 L32 5"/></svg></span><span class="tx"><b>Un correo de Gmail del negocio</b><span>Ahí le llegan los mensajes de su página, y es el dueño de su perfil de Google Maps.</span></span></label><details><summary>¿No tiene? Así se crea</summary><ol><li>Entre a <b>accounts.google.com/signup</b> en el celular o el computador.</li><li>En nombre y apellido, escriba el nombre de su negocio.</li><li>Elija la dirección, ojalá con el nombre del negocio: <b>panaderiajuanita.bogota@gmail.com</b>.</li><li>Cree una contraseña segura y anótela en un lugar seguro. No se la dé a nadie, tampoco a nosotros.</li><li>Agregue su celular para recuperar la cuenta si olvida la contraseña.</li><li>Envíenos solo la dirección del correo.</li></ol><p>Si alguien le pide una contraseña en nombre de Folio, no es Folio.</p></details></li>
+          <li><label><input type="checkbox"><span class="bx"><svg viewBox="0 0 36 34" aria-hidden="true"><path d="M5 19 L14 27 L32 5"/></svg></span><span class="tx"><b>Acceso a su perfil de Google Maps</b><span>Nos agrega como administradores para dejarlo completo. El perfil sigue siendo suyo.</span></span></label><details><summary>Así nos agrega</summary><ol><li>Con la cuenta de Google de su negocio, búsquelo en Google o en Google Maps.</li><li>Toque los tres puntos y luego <b>Configuración del perfil de empresa</b>.</li><li>Entre a <b>Personas y acceso</b> y toque <b>Agregar</b>.</li><li>Escriba <b>folioestudiodigital@gmail.com</b>, elija <b>Administrador</b> y toque <b>Invitar</b>.</li></ol><p>¿Su negocio todavía no aparece en Google Maps? Lo creamos juntos.</p></details></li>
+          <li><label><input type="checkbox"><span class="bx"><svg viewBox="0 0 36 34" aria-hidden="true"><path d="M5 19 L14 27 L32 5"/></svg></span><span class="tx"><b>Sus datos para registrar el dominio</b><span>Nombre completo o razón social, correo, teléfono y dirección. El dominio queda a su nombre; el registro lo hacemos nosotros.</span></span></label></li>
+          <li><label><input type="checkbox"><span class="bx"><svg viewBox="0 0 36 34" aria-hidden="true"><path d="M5 19 L14 27 L32 5"/></svg></span><span class="tx"><b>Su número de WhatsApp</b><span>Donde quiere recibir a sus clientes. Recomendamos WhatsApp Business, que es gratis.</span></span></label></li>
+          <li><label><input type="checkbox"><span class="bx"><svg viewBox="0 0 36 34" aria-hidden="true"><path d="M5 19 L14 27 L32 5"/></svg></span><span class="tx"><span class="only">Solo Negocio + Automatización</span><b>Una videollamada el día de la instalación</b><span>Usted toca “Permitir” en su cuenta de Google y le enseñamos a usar su herramienta.</span></span></label></li>
+          </ul>
+          <svg class="stamp2" viewBox="0 0 240 92" role="img" aria-label="Nunca le pedimos contraseñas"><g filter="url(#tinta2)"><rect x="4" y="4" width="232" height="84" rx="9" fill="none" stroke="currentColor" stroke-width="5"/><text x="120" y="41" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-size="29" style="font-stretch:68%" fill="currentColor">NUNCA LE PEDIMOS</text><text x="120" y="73" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-size="29" style="font-stretch:68%" fill="currentColor">CONTRASEÑAS</text></g></svg>
+        </div>
+      </div>
+      <p class="how-own"><b>Todo queda a su nombre.</b><span>El dominio se registra a su nombre. Cuando paga el total, la página, los textos y el diseño son suyos. Su perfil de Google, su WhatsApp y su correo siempre fueron suyos. Si algún día quiere irse, le entregamos los archivos y el código para llevarse el dominio a donde quiera.</span></p>
+    </div>
+  </section>
+
+  <!-- Folio 8 -->
+  <section class="sheet dark sec letter" id="nosotros" data-title="Quién está detrás">
+    <span class="fno">Folio 8</span>
     <div class="wrap letter-grid">
       <div class="letter-body">
         <!-- Portrait: drop img/samuel.webp (4:5) and remove "hidden" -->
@@ -971,7 +1090,7 @@ html:not(.js) .beats{gap:80px}
       <div>
         <ol class="steps" id="proceso">
           <li><b>Le mostramos su página de prueba</b><p>Gratis y con el nombre de su negocio. Si le gusta, le enviamos una propuesta con precio fijo.</p><small>Gratis</small></li>
-          <li><b>Nos cuenta de su negocio</b><p>Responde un cuestionario sencillo y nos manda fotos y logo. Paga el 50%.</p><small>10 minutos</small></li>
+          <li><b>Nos cuenta de su negocio</b><p>Responde un cuestionario sencillo y nos manda fotos y logo. Paga el 50%.</p><small>Al empezar</small></li>
           <li><b>Revisa la primera versión</b><p>La ve en su celular y nos pide cambios. Dos rondas incluidas.</p><small>De 5 a 15 días hábiles</small></li>
           <li><b>Publicamos</b><p>Paga el 50% restante, conectamos su dominio y su perfil de Google, y queda en línea.</p><small>Cuando usted la aprueba</small></li>
         </ol>
@@ -980,9 +1099,9 @@ html:not(.js) .beats{gap:80px}
     </div>
   </section>
 
-  <!-- Folio 8 -->
+  <!-- Folio 9 -->
   <section class="sheet sec faq" id="preguntas" data-title="Preguntas">
-    <span class="fno">Folio 8</span>
+    <span class="fno">Folio 9</span>
     <div class="wrap faq-grid">
       <div>
         <h2>Lo que <em>todos</em> preguntan.</h2>
@@ -994,18 +1113,18 @@ html:not(.js) .beats{gap:80px}
         <details><summary>¿Tengo que pagar una mensualidad?</summary><p>No. Paga la página una sola vez. Lo único que se repite es el dominio, una vez al año (unos $40.000), y le avisamos un mes antes. El plan Siempre al Día es opcional y lo puede cancelar cuando quiera.</p></details>
         <details><summary>¿La página y el dominio son míos?</summary><p>Sí. El dominio se registra a su nombre y, una vez paga el total, la página es suya. Si algún día quiere irse, le entregamos todos los archivos.</p></details>
         <details><summary>¿Cuánto cuesta tenerla en internet?</summary><p>Solo el dominio, que es la dirección de su página: unos $40.000 al año para un .com, registrado a su nombre. <b>Se paga cada año.</b> El primer año va en su primera cuenta de cobro; después, un mes antes de que se cumpla el año, le enviamos la cuenta de la renovación y nosotros lo renovamos. Si no se renueva, la página deja de verse en esa dirección. El alojamiento está incluido sin costo.</p></details>
-        <details><summary>¿Qué tengo que darles?</summary><p>El 50% inicial; su logo si lo tiene; de 5 a 15 fotos (las del celular sirven); sus servicios con precios y horarios; un correo de Gmail del negocio (si no tiene, se crea en 5 minutos); acceso a su perfil de Google Maps; y sus datos para registrar el dominio a su nombre. Los textos los escribimos nosotros. Nunca le pedimos contraseñas. <a href="como-funciona.html">Aquí está la lista completa, con los pasos</a>.</p></details>
+        <details><summary>¿Qué tengo que darles?</summary><p>El 50% inicial; su logo si lo tiene; de 5 a 15 fotos (las del celular sirven); sus servicios con precios y horarios; un correo de Gmail del negocio (si no tiene, le explicamos cómo crearlo); acceso a su perfil de Google Maps; y sus datos para registrar el dominio a su nombre. Los textos los escribimos nosotros. Nunca le pedimos contraseñas. <a href="#como-funciona">Aquí está la lista completa, con los pasos</a>.</p></details>
         <details><summary>¿Puedo cambiar precios o el menú después?</summary><p>Sí. Con el plan de mantenimiento nos escribe y lo cambiamos. También podemos conectar la página a una hoja de Google para que usted mismo actualice el menú o los precios.</p></details>
-        <details><summary>¿Necesito crear alguna cuenta?</summary><p>Solo un correo de Gmail para el negocio si todavía no tiene uno, y agregarnos como administradores de su perfil de Google Maps (2 minutos). Del dominio, el alojamiento y la publicación nos encargamos nosotros. <a href="como-funciona.html#gmail">Vea cómo crear el Gmail</a>.</p></details>
+        <details><summary>¿Necesito crear alguna cuenta?</summary><p>Solo un correo de Gmail para el negocio si todavía no tiene uno, y agregarnos como administradores de su perfil de Google Maps. Del dominio, el alojamiento y la publicación nos encargamos nosotros. <a href="#como-funciona">Vea cómo crear el Gmail</a>.</p></details>
         <details><summary>¿Cómo puedo pagar?</summary><p>Transferencia bancaria, Bre-B, Nequi o Daviplata. 50% para empezar y 50% cuando aprueba la página, antes de publicarla.</p></details>
         <details><summary>¿Qué hacen con mis datos?</summary><p>Solo usamos lo que usted nos envía para responderle y hacer su página. No lo vendemos ni lo compartimos. Los detalles están en nuestra <a href="privacidad.html">política de privacidad</a>.</p></details>
       </div>
     </div>
   </section>
 
-  <!-- Folio 9 -->
+  <!-- Folio 10 -->
   <section class="sheet orange sec contact" id="contacto" data-title="Contacto">
-    <span class="fno">Folio 9</span>
+    <span class="fno">Folio 10</span>
     <div class="wrap">
       <h2>¿Hablamos de <em data-biz>su negocio</em>?</h2>
       <div class="contact-row">
@@ -1026,7 +1145,7 @@ html:not(.js) .beats{gap:80px}
         <svg viewBox="0 0 200 92" class="logo" aria-hidden="true"><text x="2" y="76" font-size="100" font-family="Fraunces, Georgia, serif" font-weight="600" fill="#F1ECE2" textLength="194" lengthAdjust="spacing">Folio<tspan fill="#FF4F1F">.</tspan></text></svg>
         <p class="colo-note">Colofón. Este folio se escribió y se diseñó en Bogotá, se compuso en Archivo y Fraunces, y se publicó en noviembre de 2026. Las fotos de negocios son de Unsplash; las páginas de ejemplo, nuestras.</p>
       </div>
-      <div><h4>La página</h4><a href="#ejemplos">Ejemplos</a><a href="#casos">Su caso</a><a href="#precios">Precios</a><a href="como-funciona.html">Cómo funciona</a><a href="#preguntas">Preguntas</a></div>
+      <div><h4>La página</h4><a href="#ejemplos">Ejemplos</a><a href="#casos">Su caso</a><a href="#precios">Precios</a><a href="#como-funciona">Cómo funciona</a><a href="#preguntas">Preguntas</a></div>
       <div><h4>Folio</h4><a data-wa href="#contacto">WhatsApp</a><a href="marca.html">Marca</a><a href="privacidad.html">Privacidad</a></div>
     </div>
     <div class="colo-end"><span>© <span id="year">2026</span> Folio Estudio Digital. Hecho en Colombia.</span><span>Páginas web para negocios de toda Colombia, 100% en línea.</span></div>
