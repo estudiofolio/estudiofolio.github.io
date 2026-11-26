@@ -643,7 +643,7 @@ html:not(.js) .beats{gap:80px}
 .letter h2{font-size:clamp(2.6rem,6vw,5.2rem)}
 .letter .big{font-size:clamp(1.3rem,2.1vw,1.6rem);line-height:1.35;margin-top:30px;font-weight:600}
 .letter-body>p:not(.big){margin-top:18px;font-size:1.1rem;color:#D9D0C2}
-.sign{margin-top:30px;font-family:"Caveat","Segoe Print",cursive;font-size:3rem;line-height:1;color:var(--beam)}
+.letter-body>p.sign,.sign{margin-top:30px;font-family:"Caveat","Segoe Print",cursive;font-size:3rem;line-height:1;color:var(--beam)}
 .sign small{display:block;font-family:"Archivo",sans-serif;font-size:.95rem;color:#B7AE9F;margin-top:6px}
 .steps{list-style:none;counter-reset:s}
 .steps li{counter-increment:s;display:grid;grid-template-columns:70px 1fr;gap:4px 18px;padding:24px 0;border-bottom:1px solid rgba(255,255,255,.16)}
@@ -1079,8 +1079,7 @@ html:not(.js) .beats{gap:80px}
     <span class="fno">Folio 8</span>
     <div class="wrap letter-grid">
       <div class="letter-body">
-        <!-- Portrait: drop img/samuel.webp (4:5) and remove "hidden" -->
-        <figure class="portrait" hidden><span class="tape"></span><img src="img/samuel.webp" width="800" height="1000" alt="Samuel, fundador de Folio Estudio Digital" loading="lazy"><figcaption>Samuel, fundador</figcaption></figure>
+        <figure class="portrait"><span class="tape"></span><img src="img/samuel.webp" width="800" height="1000" alt="Samuel, fundador de Folio Estudio Digital" loading="lazy"><figcaption>Samuel, fundador</figcaption></figure>
         <h2>Hola, soy <em>Samuel</em>.</h2>
         <p class="big">Folio es mi estudio, y existe por una razón: hay negocios muy buenos que la gente no encuentra en internet.</p>
         <p>Lo vi buscando veterinarias y consultorios en Bogotá: lugares con 4,9 estrellas y más de cien reseñas en Google, pero sin una página donde ver sus servicios o pedir una cita. Eso tiene arreglo, y no tiene por qué costar una fortuna.</p>
